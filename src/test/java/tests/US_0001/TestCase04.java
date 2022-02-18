@@ -17,7 +17,7 @@ public class TestCase04 {
         JavascriptExecutor javascriptExecutor=(JavascriptExecutor) Driver.getDriver();
 
         javascriptExecutor.executeScript("window.scrollBy(0,3200)");
-        Assert.assertTrue(hotelMyCampMainaAnaSayfa.sliderBölümü.isDisplayed());
+        Assert.assertTrue(hotelMyCampMainaAnaSayfa.sliderBolumu.isDisplayed());
 
         javascriptExecutor.executeScript("arguments[0].click();",hotelMyCampMainaAnaSayfa.sliderBölümüButton1);
         Assert.assertTrue(hotelMyCampMainaAnaSayfa.sliderBölümüButton1.isEnabled());

@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utilities.ConfigReader;
 import utilities.Driver;
 
 public class HotelMyCampHotelRooms {
@@ -12,8 +13,24 @@ public class HotelMyCampHotelRooms {
         PageFactory.initElements(Driver.getDriver(), this);
 
     }
-    @FindBy(xpath = "//span[text()='Hotel Management']")
+
+    @FindBy(xpath = "//a[.='Log in']")
+    public WebElement anasayfaLoginButtonElementi;
+   @FindBy(xpath = "//input[@id='UserName']")
+   public WebElement usernameBox;
+
+   @FindBy(xpath = "//input[@id='Password']")
+   public WebElement passwordBox;
+
+   @FindBy(xpath = "//input[@id='btnSubmit']")
+    public WebElement loginButtonElementi;
+
+   @FindBy(xpath = "//span[.='List Of Hotelrooms']")
+    public  WebElement listOfHotelroomsYazisi;
+
+ @FindBy(xpath = "//span[text()='Hotel Management']")
     public WebElement hotelManagementButtonElementi;
+
 
     @FindBy(xpath = "//span[text()='Add User ']")
     public WebElement addUserButtonElementi;
@@ -43,7 +60,7 @@ public class HotelMyCampHotelRooms {
     @FindBy(xpath = "//a[text()='General Data']")
     public WebElement generalDataElementi;
 
-    @FindBy(xpath = "//a[text()='Photos']")
+    @FindBy(xpath = "//a[.='Photos']")
     public WebElement photosElementi;
 
     @FindBy(xpath = "//a[text()='Properties']")
@@ -51,6 +68,8 @@ public class HotelMyCampHotelRooms {
 
     @FindBy(xpath = "//select[@id='IDHotel']")
     public WebElement hotelDropDownElementi;
+    @FindBy(xpath = "//a[.='Edit Hotelroom']")
+    public WebElement editHotelRoomYaziElementi;
 
     @FindBy(xpath = "(//button[@class='btn green'])[1]")
     public WebElement saveButonuWebElementi;
@@ -61,13 +80,13 @@ public class HotelMyCampHotelRooms {
     @FindBy(xpath = "//button[text()='Cancel']")
     public WebElement alertCancelButonuWebElementi;
 
-    @FindBy(xpath = "//input[@id='Code']")
+    @FindBy(xpath = "//input[@class='form-control input-lg required']")
     public WebElement codeElementi;
 
     @FindBy(xpath = "//input[@id='Name']")
     public WebElement nameElementi;
 
-    @FindBy(xpath = "//input[@id='Locations']")
+    @FindBy(xpath = "//input[@id='Location']")
     public WebElement locationElementi;
 
     @FindBy(xpath = "//input[@id='Price']")
@@ -102,6 +121,14 @@ public class HotelMyCampHotelRooms {
      public WebElement selectPhotoElementi;
      @FindBy(xpath = "//a[@id='tab_images_uploader_uploadfiles']")
      public WebElement uploadPhotoElementi;
+     @FindBy(xpath = "//button[.='OK']")
+     public WebElement OKButonElementi;
+     @FindBy(xpath = "//div[.='HotelRoom was updated successfully']")
+     public WebElement basariliSaveYazisi;
+     @FindBy(xpath = "//button[@data-bb-handler='confirm']")
+     public WebElement deleteConfirmButonu;
+    @FindBy(xpath = "//div[@class='bootbox-body']")
+    public WebElement basarisizDeleteYazisi;
 
      @FindBy(xpath = "//select[@id='IkpBarcodeTypes']")
       public WebElement tipDropDownElementi;
@@ -111,6 +138,16 @@ public class HotelMyCampHotelRooms {
 
       @FindBy(xpath = "//textarea[@id='txtBarcode']")
       public  WebElement valuePropertiesElementi;
+
+    public void loginOl() {
+
+        Driver.getDriver().get(ConfigReader.getProperty("HMCUrl"));
+        anasayfaLoginButtonElementi.click();
+        usernameBox.sendKeys(ConfigReader.getProperty("ValidUserName"));
+        passwordBox.sendKeys(ConfigReader.getProperty("ValidPassword"));
+        loginButtonElementi.click();
+
+    }
 
 
 
