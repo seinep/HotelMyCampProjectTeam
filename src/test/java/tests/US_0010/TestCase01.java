@@ -32,7 +32,7 @@ public class TestCase01 {
         hotelMyCampMain.bekle(1);
         WebElement roomReservationButton = hotelMyCampMain.roomReservationButtonElementi;
 
-        ReusableMethods.getScreenshot("ListOfReservation");
+        ReusableMethods.getScreenshot("US10/ListOfReservation");
         Assert.assertTrue(roomReservationButton.isDisplayed());
 
     }
@@ -53,7 +53,7 @@ public class TestCase01 {
 
         hotelMyCampMain.addRoomReservationButtonElementi.click();
 
-        ReusableMethods.getScreenshot("CreateHotelRoomResertation");
+        ReusableMethods.getScreenshot("US10/CreateHotelRoomResertation");
 
         WebElement createHotelRoomTextElementi = hotelMyCampRoomReservation.createHotelroomreservatıonText;
         Assert.assertTrue(createHotelRoomTextElementi.isDisplayed());
@@ -64,10 +64,10 @@ public class TestCase01 {
     @Test(priority = 3)
     public void addReservationData() throws IOException {
 
-        Actions actions =new Actions(Driver.getDriver());
+        Actions actions = new Actions(Driver.getDriver());
 
         String selectUser = "manager";
-        String selectHotel ="Atlas";
+        String selectHotel = "Atlas";
 
         WebElement selectUserDropDown = hotelMyCampRoomReservation.selectUserDropDown;
         WebElement selectHotelDropDown = hotelMyCampRoomReservation.selectHotelDropDown;
@@ -77,25 +77,25 @@ public class TestCase01 {
         select = new Select(selectHotelDropDown);
         select.selectByVisibleText(selectHotel);
 
-        String price="2468";
+        String price = "2468";
         hotelMyCampRoomReservation.priceBoxElementi.sendKeys(price);
 
-        String startDate="03/15/2022";
+        String startDate = "03/15/2022";
         hotelMyCampRoomReservation.startDateBox.sendKeys(startDate);
 
-        String endDate="03/20/2022";
+        String endDate = "03/20/2022";
         hotelMyCampRoomReservation.endDateBox.sendKeys(endDate);
         actions.sendKeys(Keys.ENTER).perform();
 
-        String adultAmount="2";
+        String adultAmount = "2";
         hotelMyCampRoomReservation.adultAmountBox.sendKeys(adultAmount);
 
         String contactNameSurname = "Kartal";
         String contactPhone = "5322567745";
-        String contactEmail ="kartal@kartal.com";
-        String note="Hello";
+        String contactEmail = "kartal@kartal.com";
+        String note = "Hello";
 
-        String childAmount="3";
+        String childAmount = "3";
         actions.sendKeys(Keys.TAB).sendKeys(childAmount)
                 .sendKeys(Keys.TAB).sendKeys(contactNameSurname)
                 .sendKeys(Keys.TAB).sendKeys(contactPhone)
@@ -103,10 +103,11 @@ public class TestCase01 {
                 .sendKeys(Keys.TAB).sendKeys(note)
                 .sendKeys(Keys.TAB).sendKeys(Keys.SPACE)
                 .sendKeys(Keys.TAB).sendKeys(Keys.TAB)
-                .sendKeys(Keys.END).perform();
+                .perform();
+        actions.sendKeys(Keys.END).perform();
 
-        JSUtils.scrollDownByJS();
-        ReusableMethods.getScreenshot("RoomReservation");
+
+        ReusableMethods.getScreenshot("US10/RoomReservation");
 
     }
 
@@ -116,33 +117,57 @@ public class TestCase01 {
         WebElement saveButton = hotelMyCampRoomReservation.saveButonu;
         saveButton.click();
 
-        ReusableMethods.getScreenshot("RoomReservation was inserted successfully");
+        hotelMyCampMain.bekle(1);
+        ReusableMethods.getScreenshot("US10/RoomReservationSuccessfully");
 
-        String expectedText = "RoomReservation was inserted successfully";
-        String actualText = hotelMyCampRoomReservation.alertYazisiElementi.getText();
+        // String expectedText = "RoomReservation was inserted successfully";
+        //  String actualText = hotelMyCampRoomReservation.alertYazisiElementi.getText();
 
-        Assert.assertTrue(actualText.contains(expectedText));
+        //  Assert.assertTrue(actualText.contains(expectedText));
 
         hotelMyCampRoomReservation.onayOkTusu.click();
 
 
+    }
 
+    //Girilen veriler tabloda gorunur
+    @Test(priority = 5)
+    public void addDataDisplayed() throws IOException {
+
+        Actions actions = new Actions(Driver.getDriver());
+        actions.sendKeys(Keys.HOME).perform();
+
+        hotelMyCampMain.bekle(1);
+        hotelMyCampMain.roomReservationButtonElementi.click();
+
+        String contactNameSurname ="Kartal";
+        String contactPhone ="(225) 677-4553";
+        String contactEmail = "kartal@kartal.com";
+
+        hotelMyCampRoomReservation.contactNameSurnameSearchBox.sendKeys(contactNameSurname);
+
+        actions.sendKeys(Keys.TAB).sendKeys(contactPhone)
+                .sendKeys(Keys.TAB).sendKeys(contactEmail)
+                .sendKeys(Keys.TAB).sendKeys(Keys.TAB).sendKeys(Keys.TAB).sendKeys(Keys.ENTER).perform();
+
+        hotelMyCampMain.bekle(1);
+
+        ReusableMethods.getScreenshot("US10/WebtableSearch");
+
+
+        String actualContactName = hotelMyCampRoomReservation.webtableContactName.getText();
+        Assert.assertEquals(actualContactName, contactNameSurname);
+
+        String actualContactPhone=hotelMyCampRoomReservation.webtableContactPhone.getText();
+        Assert.assertEquals(actualContactPhone, contactPhone);
+
+        String actualContactEmail = hotelMyCampRoomReservation.webtableContactEmail.getText();
+        Assert.assertEquals(actualContactEmail,contactEmail);
 
 
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 

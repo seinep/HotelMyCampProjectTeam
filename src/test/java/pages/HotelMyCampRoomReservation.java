@@ -99,6 +99,17 @@ public class HotelMyCampRoomReservation {
     @FindBy(xpath = "//div[@class='modal-body']")
     public WebElement alertYazisiElementi;
 
+    @FindBy(xpath = "//input[@name='ContactNameSurname']")
+    public WebElement contactNameSurnameSearchBox;
+
+    @FindBy(xpath = "//tbody/tr[1]/td[9]")
+    public WebElement webtableContactName;
+
+    @FindBy(xpath = "//tbody/tr[1]/td[10]")
+    public WebElement webtableContactPhone;
+
+    @FindBy(xpath = "//tbody/tr[1]/td[11]")
+    public WebElement webtableContactEmail;
 
 
 
