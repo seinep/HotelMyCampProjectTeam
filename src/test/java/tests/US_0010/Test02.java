@@ -9,15 +9,14 @@ import org.testng.annotations.Test;
 import pages.HotelMyCampMain;
 import pages.HotelMyCampRoomReservation;
 import utilities.Driver;
-import utilities.JSUtils;
 import utilities.ReusableMethods;
 
 import java.io.IOException;
 
-public class TestCase01 {
+public class Test02 {
 
-    HotelMyCampMain hotelMyCampMain = new HotelMyCampMain();
-    HotelMyCampRoomReservation hotelMyCampRoomReservation = new HotelMyCampRoomReservation();
+    HotelMyCampMain hotelMyCampMain;
+    HotelMyCampRoomReservation hotelMyCampRoomReservation;
 
 
     //"Hotel Management butonuna tiklandigin da
@@ -26,6 +25,7 @@ public class TestCase01 {
 
     @Test(priority = 1)
     public void listReservationsDisplayed() throws IOException {
+        hotelMyCampMain = new HotelMyCampMain();
         hotelMyCampMain.loginOl();
 
         hotelMyCampMain.hotelManagementButtonElementi.click();
@@ -63,7 +63,7 @@ public class TestCase01 {
 
     @Test(priority = 3)
     public void addReservationData() throws IOException {
-
+        hotelMyCampRoomReservation = new HotelMyCampRoomReservation();
         Actions actions = new Actions(Driver.getDriver());
 
         String selectUser = "manager";

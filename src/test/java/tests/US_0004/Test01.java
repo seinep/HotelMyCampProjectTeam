@@ -29,7 +29,7 @@ public class Test01 {
         WebElement loginButtonElementi = hotelMyCamp.logInButon;
         Assert.assertTrue(loginButtonElementi.isDisplayed());
 
-        ReusableMethods.getScreenshot("LoginButtonDisplayed");
+        ReusableMethods.getScreenshot("US04/LoginButtonDisplayed");
 
     }
 
@@ -51,7 +51,7 @@ public class Test01 {
           loginButton.click();
 
         try {
-            ReusableMethods.getScreenshot("LoginSuccessful");
+            ReusableMethods.getScreenshot("US04/LoginSuccessful");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -91,7 +91,7 @@ public class Test01 {
         WebElement createhoteltext = hotelMyCamp.createHotelTextElementi;
         Assert.assertTrue(createhoteltext.isDisplayed());
 
-        ReusableMethods.getScreenshot("Create_Hotel_Displayed");
+        ReusableMethods.getScreenshot("US04/Create_Hotel_Displayed");
 
         String expectedText ="Create Hotel";
         String actualtext = createhoteltext.getText();
@@ -172,7 +172,7 @@ public class Test01 {
         Assert.assertEquals(actualNameText, expectedName);
         Assert.assertEquals(actualPhoneText, expectedPhone);
 
-
+Driver.closeDriver();
 
 
     }
