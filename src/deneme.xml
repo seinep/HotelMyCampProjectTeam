@@ -4,16 +4,7 @@
     <test name="HMC">
         <packages>
 
-            <package name="tests.US_0001"></package>
-            <package name="tests.US_0002"></package>
-            <package name="tests.US_0003"></package>
-            <package name="tests.US_0004"></package>
-            <package name="tests.US_0005"></package>
-            <package name="tests.US_0006"></package>
-            <package name="tests.US_0007"></package>
-            <package name="tests.US_0008"></package>
-            <package name="tests.US_0009"></package>
-            <package name="tests.US_0010"></package>
+            <package name=".*"></package>
 
         </packages>
     </test>
