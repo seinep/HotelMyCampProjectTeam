@@ -8,12 +8,14 @@ import pages.HotelMyCampHotelList;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
+import java.io.IOException;
+
 public class TestCase05 {
     HotelMyCampHotelList hmclist;
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 
     @Test()
-    public void test05(){
+    public void test05() throws IOException {
 
         hmclist=new HotelMyCampHotelList();
 
@@ -25,6 +27,11 @@ public class TestCase05 {
 
         String expectedDeleteAlertYazisi="Would you like to continue?";
         System.out.println(expectedDeleteAlertYazisi);
+
+        ReusableMethods.switchToWindow("Admin - List Of Hotels");
+        ReusableMethods.waitFor(3);
+        ReusableMethods.getScreenshot("Son Guncelleme");
+        ReusableMethods.waitFor(2);
 
 
         hmclist.tearDown();

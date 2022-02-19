@@ -9,24 +9,19 @@ import pages.HotelMyCampHotelList;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
+import java.io.IOException;
 import java.util.Set;
 
 public class TestCase03 {
     HotelMyCampHotelList hmclist;
 
     @Test
-    public void test01(){
-       hmclist = new HotelMyCampHotelList();
-        //hmclist.loginOl();
-        //ReusableMethods.waitFor(3);
+    public void test01() throws IOException {
+        hmclist = new HotelMyCampHotelList();
 
-       //hmclist.hotelManagementButtonElementi.click();
-       //hmclist.hotelListButtonElementi.click();
-       //hmclist.detailsButonu.click();
-       //hmclist.detailsHotelListButonu.click();
+        ReusableMethods.switchToWindow("Admin - Edit Hotel");
 
-        String ilksyfHandleDegeri = Driver.getDriver().getWindowHandle();
-
+    /*  String ilksyfHandleDegeri = Driver.getDriver().getWindowHandle();
         Set<String> handleSet = Driver.getDriver().getWindowHandles();
         String ikincisyfHandleDegeri = "";
         for (String each : handleSet
@@ -34,10 +29,10 @@ public class TestCase03 {
             if (!each.equals(ilksyfHandleDegeri))
                 ikincisyfHandleDegeri = each;
         }
-        Driver.getDriver().switchTo().window(ikincisyfHandleDegeri);
+        Driver.getDriver().switchTo().window(ikincisyfHandleDegeri);*/
         ReusableMethods.waitFor(4);
 
-       hmclist.codeKutusuWebElementi.clear();
+        hmclist.codeKutusuWebElementi.clear();
         ReusableMethods.waitFor(2);
 
         hmclist.codeKutusuWebElementi.sendKeys("G27");
@@ -60,7 +55,7 @@ public class TestCase03 {
 
         ReusableMethods.waitForVisibility(hmclist.alertTexti,10);
         Assert.assertTrue(hmclist.alertTexti.isDisplayed());
-      String expectedAlertYazisi="Hotel was updated successfully";
+        String expectedAlertYazisi="Hotel was updated successfully";
 
         System.out.println(expectedAlertYazisi);
 
