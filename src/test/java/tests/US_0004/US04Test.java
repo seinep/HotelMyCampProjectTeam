@@ -14,7 +14,7 @@ import utilities.ReusableMethods;
 
 import java.io.IOException;
 
-public class Test01 {
+public class US04Test {
 
 
     HotelMyCampMain hotelMyCamp;
@@ -131,7 +131,7 @@ public class Test01 {
         hotelList.addHotelSaveButtonElementi.click();
 
         hotelMyCamp.bekle(1);
-        ReusableMethods.getScreenshot("Hotel_Save");
+        ReusableMethods.getScreenshot("US10/Hotel_Save");
         String expectedResultText = "Hotel was inserted successfully";
         String actualResultText = hotelList.addHotelAlertMesajiElementi.getText();
         Assert.assertTrue(actualResultText.contains(expectedResultText));
@@ -167,12 +167,14 @@ public class Test01 {
         String actualPhoneText = actualPhone.getText();
 
 
-        ReusableMethods.getScreenshot("search");
+        ReusableMethods.getScreenshot("US10/search");
 
         Assert.assertEquals(actualNameText, expectedName);
         Assert.assertEquals(actualPhoneText, expectedPhone);
 
-Driver.closeDriver();
+        hotelMyCamp.bekle(1);
+
+        Driver.closeDriver();
 
 
     }

@@ -13,7 +13,7 @@ import utilities.ReusableMethods;
 
 import java.io.IOException;
 
-public class Test02 {
+public class US10Test01 {
 
     HotelMyCampMain hotelMyCampMain;
     HotelMyCampRoomReservation hotelMyCampRoomReservation;
