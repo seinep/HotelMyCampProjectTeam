@@ -138,14 +138,10 @@ public class Test01 {
 
     }
 
-   //
-    //TC0005
-    //"https://www.hotelmycamp.com/admin/HotelAdmin/
-    //adresindeki webtable icinde 'Code' olarak 13579 degeri search edildiginde, 'Name' kisminda 'Deneme Hotel'
-    //Phone degeri olarak da '302 718 2180' gorunmeli."
+
 
     @Test(priority = 6)
-    public void hotelAdd01() throws IOException {
+    public void hotelAddControl() throws IOException {
 
         hotelMyCamp.hotelListButtonElementi.click();
 
