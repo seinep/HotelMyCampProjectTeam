@@ -75,7 +75,7 @@ public class HotelMyCampRoomReservation {
     public WebElement onayOkTusu;
 
     @FindBy(xpath = "//div[@class='caption']")
-    public WebElement createHotelroomreservatıonText;
+    public WebElement createHotelroomreservationText;
 
 
     @FindBy(xpath = "//select[@id='IDUser']")

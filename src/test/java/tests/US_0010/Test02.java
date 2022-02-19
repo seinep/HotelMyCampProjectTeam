@@ -45,7 +45,7 @@ public class Test02 {
 
     @Test(priority = 2)
     public void createHotelRoomReservationEnabled() throws IOException {
-
+        hotelMyCampRoomReservation = new HotelMyCampRoomReservation();
         hotelMyCampMain.roomReservationButtonElementi.click();
 
         WebElement addRoomReservationButton = hotelMyCampMain.roomReservationButtonElementi;
@@ -55,7 +55,7 @@ public class Test02 {
 
         ReusableMethods.getScreenshot("US10/CreateHotelRoomResertation");
 
-        WebElement createHotelRoomTextElementi = hotelMyCampRoomReservation.createHotelroomreservatıonText;
+        WebElement createHotelRoomTextElementi = hotelMyCampRoomReservation.createHotelroomreservationText;
         Assert.assertTrue(createHotelRoomTextElementi.isDisplayed());
 
     }
@@ -165,7 +165,7 @@ public class Test02 {
         Assert.assertEquals(actualContactEmail,contactEmail);
 
 
-
+Driver.closeDriver();
 
     }
 
