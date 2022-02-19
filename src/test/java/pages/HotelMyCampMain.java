@@ -182,6 +182,9 @@ public void loginOl(){
     @FindBy(xpath = "//li[text()='Username or password is incorrect, please correct them and try again']")
     public WebElement errorMesaj2;
 
+    @FindBy(xpath = "//div[@class='caption']")
+    public WebElement createHotelTextElementi;
+
 
 
 }
