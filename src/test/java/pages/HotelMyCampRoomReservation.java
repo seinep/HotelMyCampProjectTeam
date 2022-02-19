@@ -46,4 +46,35 @@ public class HotelMyCampRoomReservation {
 
     @FindBy(id = "btnDelete")  // //button[@id='btnDelete']
     public WebElement deleteButton;
+
+    @FindBy(xpath ="(//div[@id='frmBody'])[1]")
+    public WebElement createHotelroomreservatıonFormu;
+
+    @FindBy(xpath = "(//select[@title='Select User'])[1]")
+    public WebElement idUserilk;
+
+    @FindBy(linkText = "manager")
+    public WebElement idUserManager;
+
+    @FindBy(xpath = "(//select[@title='Select HotelRoom'])[1]")
+    public WebElement idUserikinci;
+
+    @FindBy(xpath = "//input[@id='Price']")
+    public WebElement reservationPrice;
+
+    @FindBy(xpath = "//div[@id='uniform-IsPaid']")
+    public WebElement isPaidKutucugu;
+
+    @FindBy(xpath = "(//button[@id='btnSubmit'])[1]")
+    public WebElement saveButonu;
+
+    @FindBy(xpath = "//div[.='RoomReservation was inserted successfully']")
+    public WebElement reservationOnayYazisi;
+
+    @FindBy(xpath = "//button[@class='btn btn-primary']")
+    public WebElement onayOkTusu;
+
+
+
+
 }
