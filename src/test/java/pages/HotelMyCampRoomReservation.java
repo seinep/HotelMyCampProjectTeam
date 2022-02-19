@@ -74,6 +74,32 @@ public class HotelMyCampRoomReservation {
     @FindBy(xpath = "//button[@class='btn btn-primary']")
     public WebElement onayOkTusu;
 
+    @FindBy(xpath = "//div[@class='caption']")
+    public WebElement createHotelroomreservatıonText;
+
+
+    @FindBy(xpath = "//select[@id='IDUser']")
+    public WebElement selectUserDropDown;
+
+    @FindBy(xpath = "//select[@id='IDHotelRoom']")
+    public WebElement selectHotelDropDown;
+
+    @FindBy(xpath = "//input[@id='Price']")
+    public WebElement priceBoxElementi;
+
+    @FindBy(xpath = "//input[@id='DateStart']")
+    public WebElement startDateBox;
+
+    @FindBy(xpath = "//input[@id='DateEnd']")
+    public WebElement endDateBox;
+
+    @FindBy(xpath = "//input[@id='AdultAmount']")
+    public WebElement adultAmountBox;
+
+    @FindBy(xpath = "//div[@class='modal-body']")
+    public WebElement alertYazisiElementi;
+
+
 
 
 
