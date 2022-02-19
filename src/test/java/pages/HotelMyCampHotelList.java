@@ -169,6 +169,12 @@ public class HotelMyCampHotelList {
  @FindBy (xpath = "//div[text()='Would you like to continue?']")
  public WebElement deleteAlertYazisi;
 
+ @FindBy(xpath = "//tbody/tr[1]/td[3]")
+ public WebElement webtableNameBox;
+
+ @FindBy(xpath = "//tbody/tr[1]/td[5]")
+ public WebElement webtablePhoneBox;
+
 
  public void loginOl() {
 

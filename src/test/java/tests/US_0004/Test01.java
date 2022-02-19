@@ -20,6 +20,7 @@ public class Test01 {
     HotelMyCampMain hotelMyCamp;
     HotelMyCampHotelList hotelList;
 
+
     @Test (priority = 1)
     public void loginButonuDisplayed() throws IOException {
         hotelMyCamp = new HotelMyCampMain();
@@ -77,13 +78,11 @@ public class Test01 {
 
     }
 
-//TC0003
-//"https://www.hotelmycamp.com/admin/HotelAdmin/Create/
-//adresinde 'Create Hotel' yazisi gorunuyor olmali."
+
 
     @Test(priority = 5)
     public void CreateHotelDisplayed() throws IOException {
-
+        hotelList = new HotelMyCampHotelList();
         WebElement createhoteltext = hotelMyCamp.createHotelTextElementi;
         Assert.assertTrue(createhoteltext.isDisplayed());
 
@@ -94,13 +93,17 @@ public class Test01 {
 
         Assert.assertEquals(actualtext,expectedText);
 
-    }
+    /*
+            "Code: 13579
+            Name: Deneme Hotel
+            Address: 9 E. Loockerman street, suite 311 Dover, DE 19901
+            Phone: 302 718 2180
+            Email: info@hotelmycamp.com
+            Yukaridaki bilgilerle yeni hotel olusturulacak.
+    */
 
-    @Test(priority = 6)
-    public void hotelAdd01() throws IOException {
-
-       // String code ="13579";
-        hotelList.addHotelCodeBoxElementi.sendKeys("13579");
+        String code ="13579";
+        hotelList.addHotelCodeBoxElementi.sendKeys(code);
 
         String hotelName = "Deneme Hotel";
         hotelList.addHotelNameBoxElementi.sendKeys(hotelName);
@@ -130,6 +133,47 @@ public class Test01 {
 
         WebElement alertOkButtonElementi = hotelList.addHotelAlertOkButtonElementi;
         alertOkButtonElementi.click();
+
+
+
+    }
+
+   //
+    //TC0005
+    //"https://www.hotelmycamp.com/admin/HotelAdmin/
+    //adresindeki webtable icinde 'Code' olarak 13579 degeri search edildiginde, 'Name' kisminda 'Deneme Hotel'
+    //Phone degeri olarak da '302 718 2180' gorunmeli."
+
+    @Test(priority = 6)
+    public void hotelAdd01() throws IOException {
+
+        hotelMyCamp.hotelListButtonElementi.click();
+
+        String code = "13579";
+
+        hotelList.addHotelCodeSearchBoxElementi.sendKeys(code);
+        hotelList.addHotelSearchButtonElementi.click();
+
+        String expectedName ="Deneme Hotel";
+        String expectedPhone= "302 718 2180";
+
+        hotelMyCamp.bekle(1);
+
+        WebElement actualName = hotelList.webtableNameBox;
+        WebElement actualPhone = hotelList.webtablePhoneBox;
+
+        String actualNameText = actualName.getText();
+        String actualPhoneText = actualPhone.getText();
+
+
+        ReusableMethods.getScreenshot("search");
+
+        Assert.assertEquals(actualNameText, expectedName);
+        Assert.assertEquals(actualPhoneText, expectedPhone);
+
+
+
+
     }
 
 
