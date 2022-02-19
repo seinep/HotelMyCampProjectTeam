@@ -33,6 +33,8 @@ public class Test01 {
 
     }
 
+
+
     @Test (priority = 2,dependsOnMethods = "loginButonuDisplayed")
     public void loginAvailable() {
         hotelMyCamp.logInButon.click();
@@ -56,6 +58,8 @@ public class Test01 {
 
     }
 
+
+
     @Test(priority = 3)
     public void hotelListButtonDisplayed() {
 
@@ -66,6 +70,7 @@ public class Test01 {
         hotelListButton.click();
 
     }
+
 
 
     @Test(priority = 4)
