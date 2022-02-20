@@ -11,10 +11,11 @@ import pages.HotelMyCampMain;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
 import java.io.IOException;
 
-public class US04Test {
+public class US04Test extends TestBaseRapor {
 
 
     HotelMyCampMain hotelMyCamp;
@@ -23,12 +24,13 @@ public class US04Test {
 
     @Test (priority = 1)
     public void loginButonuDisplayed() throws IOException {
+extentTest=extentReports.createTest("LoginButonuDisplayed");
         hotelMyCamp = new HotelMyCampMain();
         Driver.getDriver().get(ConfigReader.getProperty("HMCUrl"));
 
         WebElement loginButtonElementi = hotelMyCamp.logInButon;
         Assert.assertTrue(loginButtonElementi.isDisplayed());
-
+extentTest.pass("LoginButtonuGoruldu");
         ReusableMethods.getScreenshot("US04/LoginButtonDisplayed");
 
     }
@@ -37,19 +39,24 @@ public class US04Test {
 
     @Test (priority = 2,dependsOnMethods = "loginButonuDisplayed")
     public void loginAvailable() {
+extentTest=extentReports.createTest("Login_Available");
         hotelMyCamp.logInButon.click();
         WebElement usernameBox = hotelMyCamp.usernameBox;
         WebElement passwordBox = hotelMyCamp.passwordBox;
         WebElement loginButton = hotelMyCamp.loginButtonElementi;
 
         Assert.assertTrue(usernameBox.isEnabled());
+extentTest.pass("UsernameBox_Enable");
         Assert.assertTrue(passwordBox.isEnabled());
+extentTest.pass("PasswordBox_Enable");
         Assert.assertTrue(loginButton.isDisplayed());
+extentTest.pass("LoginButton_Displayed");
 
-          usernameBox.sendKeys(ConfigReader.getProperty("ValidUserName"));
+
+        usernameBox.sendKeys(ConfigReader.getProperty("ValidUserName"));
           passwordBox.sendKeys(ConfigReader.getProperty("ValidPassword"));
           loginButton.click();
-
+extentTest.info("Giris_Yapildi");
         try {
             ReusableMethods.getScreenshot("US04/LoginSuccessful");
         } catch (IOException e) {
@@ -62,11 +69,13 @@ public class US04Test {
 
     @Test(priority = 3)
     public void hotelListButtonDisplayed() {
-
+extentTest=extentReports.createTest("hotelListButtonDisplayed");
         hotelMyCamp.hotelManagementButtonElementi.click();
         WebElement hotelListButton = hotelMyCamp.hotelListButtonElementi;
         Assert.assertTrue(hotelListButton.isDisplayed());
+extentTest.pass("Hotel_List_Button_Displayed");
         Assert.assertTrue(hotelListButton.isEnabled());
+extentTest.pass("Hotel_List_Button_Enabled");
         hotelListButton.click();
 
     }
@@ -75,10 +84,12 @@ public class US04Test {
 
     @Test(priority = 4)
     public void addHotelDisplayed() {
-
+extentTest=extentReports.createTest("add_Hotel_Button_Displayed");
         WebElement addHotelButton = hotelMyCamp.addHotelButtonElementi;
         Assert.assertTrue(addHotelButton.isDisplayed());
+extentTest.pass("add_Hotel_Button_Displayed");
         Assert.assertTrue(addHotelButton.isEnabled());
+        extentTest.pass("add_Hotel_Button_Enabled");
         addHotelButton.click();
 
     }
@@ -87,17 +98,18 @@ public class US04Test {
 
     @Test(priority = 5)
     public void CreateHotelDisplayed() throws IOException {
+extentTest=extentReports.createTest("CreateHotelDisplayed");
         hotelList = new HotelMyCampHotelList();
         WebElement createhoteltext = hotelMyCamp.createHotelTextElementi;
         Assert.assertTrue(createhoteltext.isDisplayed());
-
+extentTest.pass("CreateHotelText_Displayed");
         ReusableMethods.getScreenshot("US04/Create_Hotel_Displayed");
 
         String expectedText ="Create Hotel";
         String actualtext = createhoteltext.getText();
 
         Assert.assertEquals(actualtext,expectedText);
-
+extentTest.pass("Create_Hotel_Yazisi_Beklendigi_Gibi");
     /*
             "Code: 13579
             Name: Deneme Hotel
