@@ -9,6 +9,7 @@ import pages.HotelMyCampHotelList;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
+import java.io.IOException;
 import java.util.Set;
 
 public class TestCase02 {
@@ -16,12 +17,14 @@ public class TestCase02 {
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 
 @Test
-    public void test01(){
+    public void test01() throws IOException {
 
        hmclist = new HotelMyCampHotelList();
     //hmclist.loginOl();
 
     hmclist.hotelManagementButtonElementi.click();
+    ReusableMethods.getScreenshot("deneme");
+    ReusableMethods.waitFor(2);
     hmclist.hotelListButtonElementi.click();
 
     js.executeScript("arguments[0].scrollIntoView()",hmclist.detailsHotelListButonu);

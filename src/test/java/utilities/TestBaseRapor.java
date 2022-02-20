@@ -23,7 +23,7 @@ public abstract class TestBaseRapor {
     public void setUpTest() {
         extentReports = new ExtentReports(); // Raporlamayi baslatir
         //rapor oluştuktan sonra raporunuz nereye eklensin istiyorsanız buraya yazıyorsunuz.
-        String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+        String date = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(new Date());
         String filePath = System.getProperty("user.dir") + "/test-output/Rapor"+date+".html";
         //oluşturmak istediğimiz raporu (html formatında) başlatıyoruz, filePath ile dosya yolunu belirliyoruz.
         extentHtmlReporter = new ExtentHtmlReporter(filePath);
@@ -37,19 +37,18 @@ public abstract class TestBaseRapor {
     }
 
 
- //  // Her test methodundan sonra eğer testte hata varsa, ekran görüntüsü alıp rapora ekliyor
- //  @AfterMethod(alwaysRun = true)
- //  public void tearDownMethod(ITestResult result) throws IOException {
- //      if (result.getStatus() == ITestResult.FAILURE) { // eğer testin sonucu başarısızsa
- //          String screenshotLocation = ReusableMethods.getScreenshot(result.getName());
- //          extentTest.fail(result.getName());
- //          extentTest.addScreenCaptureFromPath(screenshotLocation);
- //          extentTest.fail(result.getThrowable());
- //      } else if (result.getStatus() == ITestResult.SKIP) { // eğer test çalıştırılmadan geçilmezse
- //          extentTest.skip("Test Case is skipped: " + result.getName()); // Ignore olanlar
- //      }
- //      Driver.closeDriver();
- //  }
+   // Her test methodundan sonra eğer testte hata varsa, ekran görüntüsü alıp rapora ekliyor
+   @AfterMethod(alwaysRun = true)
+   public void tearDownMethod(ITestResult result) throws IOException {
+       if (result.getStatus() == ITestResult.FAILURE) { // eğer testin sonucu başarısızsa
+           String screenshotLocation = ReusableMethods.getScreenshot(result.getName());
+           extentTest.fail(result.getName());
+           extentTest.addScreenCaptureFromPath(screenshotLocation);
+           extentTest.fail(result.getThrowable());
+       } else if (result.getStatus() == ITestResult.SKIP) { // eğer test çalıştırılmadan geçilmezse
+           extentTest.skip("Test Case is skipped: " + result.getName()); // Ignore olanlar
+       }
+   }
 
 
     // Raporlandırmayı sonlandırmak icin

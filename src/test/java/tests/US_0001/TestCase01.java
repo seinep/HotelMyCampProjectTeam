@@ -8,11 +8,12 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import pages.HotelMyCampMainaAnaSayfa;
 import utilities.Driver;
+import utilities.TestBaseRapor;
 
 import java.io.IOException;
 
 
-public class TestCase01 {
+public class TestCase01 extends TestBaseRapor {
     ////1.  https://www.hotelmycamp.com/ adresine gidilir  ve
 //// home,Rooms,Restarurant,AboutBlog,Contact ve Log in butonları görüyor mu dıye bakılır
 
@@ -30,11 +31,13 @@ public class TestCase01 {
       }*/
     @Test
     public void isDisPlayedTesti1() throws InterruptedException {
-
+extentTest=extentReports.createTest("DisplayedTest");
         hotelMyCampMainaAnaSayfa=new HotelMyCampMainaAnaSayfa();
         hotelMyCampMainaAnaSayfa.anaSayfaUrl();
         Assert.assertTrue(hotelMyCampMainaAnaSayfa.homeButton.isDisplayed());
+extentTest.pass("HomeButtonDisplayed");
         Assert.assertTrue(hotelMyCampMainaAnaSayfa.roomsButton.isDisplayed());
+extentTest.pass("RoomsButtonDisplayed");
         Assert.assertTrue(hotelMyCampMainaAnaSayfa.restaurantButton.isDisplayed());
         Assert.assertTrue(hotelMyCampMainaAnaSayfa.aboutButton.isDisplayed());
         Assert.assertTrue(hotelMyCampMainaAnaSayfa.contactButton.isDisplayed());

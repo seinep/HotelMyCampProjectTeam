@@ -8,9 +8,10 @@ public class TestCase02 {
 
 //2-) 'Hotels Management' ın altında 'Hotel Rooms' seçeneğinin görünürlüğünü kontrol edilmeli
 
+HotelMyCampHotelRooms hotelMyCampHotelRooms;
     @Test
-    public  void test02(){
-        HotelMyCampHotelRooms hotelMyCampHotelRooms=new HotelMyCampHotelRooms();
+    public  void test01(){
+        hotelMyCampHotelRooms=new HotelMyCampHotelRooms();
         hotelMyCampHotelRooms.hotelManagementButtonElementi.click();
         Assert.assertTrue(hotelMyCampHotelRooms.hotelRoomsButtonElementi.isDisplayed());
 

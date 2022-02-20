@@ -7,19 +7,20 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HotelMyCampHotelRooms;
+import utilities.Driver;
 
 import java.util.List;
 
 public class TestCase05 {
+
+    HotelMyCampHotelRooms hotelMyCampHotelRooms;
+    Select select;
     @Test
-    public void test05() throws InterruptedException {
-        HotelMyCampHotelRooms hotelMyCampHotelRooms=new HotelMyCampHotelRooms();
+    public void test01() throws InterruptedException {
+        hotelMyCampHotelRooms=new HotelMyCampHotelRooms();
 
 
-
-
-
-        Select select=new Select(hotelMyCampHotelRooms.hotelDropDownElementi);
+        select=new Select(hotelMyCampHotelRooms.hotelDropDownElementi);
         select.selectByIndex(1);
         String hotelElementiStr=select.getFirstSelectedOption().getText();
         List<WebElement> optionList=select.getOptions();
@@ -71,7 +72,7 @@ public class TestCase05 {
         hotelMyCampHotelRooms.OKButonElementi.click();
 
 
-
+        Driver.closeDriver();
 
 
     }

@@ -7,9 +7,11 @@ import pages.HotelMyCampHotelRooms;
 public class TestCase04 {
    // 4-)İstenilen hotel için 'DETAİLS' a click yapılmalı ve
    // yeni  açılan sayfada 'Edit Hotelroom' yazisini görünürlüğü kontrol edilmelidir
+
+    HotelMyCampHotelRooms hotelMyCampHotelRooms;
 @Test
-    public void test04(){
-    HotelMyCampHotelRooms hotelMyCampHotelRooms=new HotelMyCampHotelRooms();
+    public void test01(){
+    hotelMyCampHotelRooms=new HotelMyCampHotelRooms();
 
     hotelMyCampHotelRooms.detailsButonu.click();
     Assert.assertTrue(hotelMyCampHotelRooms.editHotelRoomYaziElementi.isDisplayed());

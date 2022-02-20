@@ -9,11 +9,12 @@ public class TestCase01 {
 //1-) https://www.hotelmycamp.com anasayfasinda 'Log in' butonu görünür olmali.
 // 'Log in' butonuna tiklayip gecerli  bilgiler kullanılarak 'admin' sayfasina erisim saglanabilmeli.
 
+    HotelMyCampHotelRooms hotelMyCampHotelRooms;
     @Test
     public void test01(){
 
 
-        HotelMyCampHotelRooms hotelMyCampHotelRooms=new HotelMyCampHotelRooms();
+        hotelMyCampHotelRooms=new HotelMyCampHotelRooms();
         hotelMyCampHotelRooms.loginOl();
 
 

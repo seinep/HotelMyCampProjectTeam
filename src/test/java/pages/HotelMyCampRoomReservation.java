@@ -114,4 +114,69 @@ public class HotelMyCampRoomReservation {
 
 
 
+    ///////////////////////////////////YENI KULLANICI OLUSTURMA /////////////////////////////
+
+    @FindBy(xpath = "//input[@id='UserName']")
+    public WebElement createNewAccountUserNameBox;
+
+    @FindBy(xpath = "//input[@id='Password']")
+    public WebElement createNewAccountPasswordBox;
+
+    @FindBy(xpath = "//a[@class='btn-custom']")
+    public WebElement createNewAccountButton;
+
+    @FindBy(xpath = "//input[@id='Email']")
+    public WebElement createNewAccountEmailBox;
+
+    @FindBy(xpath = "//input[@id='NameSurname']")
+    public WebElement createNewAccountFullName;
+
+    @FindBy(xpath = "//input[@id='PhoneNo']")
+    public WebElement createNewAccountPhoneBox;
+
+    @FindBy(xpath = "//input[@id='SSN']")
+    public WebElement createNewAccountSocialSecurityNumber;
+
+    @FindBy(xpath = "//input[@id='DrivingLicense']")
+    public WebElement createNewAccountDrivingLicenceBox;
+
+    @FindBy(xpath = "//select[@id='IDCountry']")
+    public WebElement createNewAccountCountryDropDown;
+
+    @FindBy(xpath = "//select[@id='IDState']")
+    public WebElement createNewAccountStateDropDown;
+
+    @FindBy(xpath = "//input[@id='Address']")
+    public WebElement createNewAccountAddressBox;
+
+    @FindBy(xpath = "//input[@id='WorkingSector']")
+    public WebElement createNewAccountWorkingSector;
+
+    @FindBy(xpath = "//input[@id='BirthDate']")
+    public WebElement createNewAccountBirthday; // ay/gun/yil
+
+    @FindBy(xpath = "//input[@id='btnSubmit']")
+    public WebElement createNewAccountSaveButton;
+
+    @FindBy(xpath = "//button[text()='OK']")
+    public WebElement createNewAccountAlertOkButton;
+
+    @FindBy(xpath = "//div[@class='bootbox-body']")
+    public WebElement createnewAccountAlertSuccessText;
+
+    ///////////////////////////////////YENI KULLANICI OLUSTURMA KAPANIS /////////////////////////////
+
+
+    @FindBy(xpath = "//a[text()='Reservations']")
+    public WebElement userReservationButton;
+
+    //@FindBy(xpath = "")
+
+
+
+
+
+
+
+
 }

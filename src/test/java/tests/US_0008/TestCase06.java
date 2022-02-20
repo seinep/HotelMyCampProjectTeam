@@ -15,14 +15,14 @@ import utilities.ReusableMethods;
 
 
 
-public class TestCase01 {
+public class TestCase06 {
 
     HotelMyCampRoomReservation hotelMyCampRoomReservation;
     HotelMyCampMain hotelMyCampMain;
 
 
     @Test
-    public void test01() {
+    public void test06() {
 
         //siteye gidilir
         Driver.getDriver().get(ConfigReader.getProperty("HMCUrl"));
@@ -38,7 +38,7 @@ public class TestCase01 {
 
     }
     @Test
-    public void test02(){
+    public void test07(){
 
         //hotel management elementi gorunuyor mu diye bakilir
         //hotel management elementine tiklanir
@@ -52,7 +52,7 @@ public class TestCase01 {
     }
 
     @Test
-    public void test03(){
+    public void test08(){
 
         //room reservation elemntine tiklanir
         //add room reservation butonu gorunuyor mu diye kontrol edilir
@@ -61,7 +61,7 @@ public class TestCase01 {
     }
 
     @Test
-    public void test04(){
+    public void test09(){
 
         //add room reservation butonuna tiklanir
         //create hotelroomreservation formu gorunuyor mu diye kontrol edilir
@@ -71,14 +71,14 @@ public class TestCase01 {
 
 
     }
-
+    Select select;
     @Test
-    public void test05(){
+    public void test10(){
 
         //formdaki kutucuklar secilip uygun sekilde doldurulur
         Actions actions=new Actions(Driver.getDriver());
         Faker faker=new Faker();
-        Select select=new Select(hotelMyCampRoomReservation.idUserilk);
+        select=new Select(hotelMyCampRoomReservation.idUserilk);
         select.selectByIndex(1);
         hotelMyCampRoomReservation.idUserikinci.click();
         Select select1=new Select(hotelMyCampRoomReservation.idUserikinci);
