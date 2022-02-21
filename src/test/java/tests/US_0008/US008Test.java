@@ -74,7 +74,7 @@ extentTest=extentReports.createTest("AddRoomReservationButtonTesti");
         //create hotelroomreservation formu gorunuyor mu diye kontrol edilir
         hotelMyCampMain.addRoomReservationButtonElementi.click();
         hotelMyCampRoomReservation=new HotelMyCampRoomReservation();
-        Assert.assertTrue(hotelMyCampRoomReservation.createHotelroomreservatıonFormu.isDisplayed());
+        Assert.assertTrue(hotelMyCampRoomReservation.createHotelroomreservationFormu.isDisplayed());
         extentTest.pass("CreateHotelRoomReservationFormuDisplayed");
 
 
