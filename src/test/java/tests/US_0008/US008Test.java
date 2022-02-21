@@ -53,26 +53,29 @@ extentTest.pass("HotelManagementButtonDisplayed") ;
         hotelMyCampMain.hotelManagementButtonElementi.click();
         ReusableMethods.waitFor(2);
         Assert.assertTrue(hotelMyCampMain.roomReservationButtonElementi.isDisplayed());
-
+extentTest.pass("RoomReservationButtonDisplayed");
     }
 
     @Test
     public void test03(){
-
+extentTest=extentReports.createTest("AddRoomReservationButtonTesti");
         //room reservation elemntine tiklanir
         //add room reservation butonu gorunuyor mu diye kontrol edilir
         hotelMyCampMain.roomReservationButtonElementi.click();
         Assert.assertTrue(hotelMyCampMain.addRoomReservationButtonElementi.isDisplayed());
+        extentTest.pass("AddRoomReseravtionButtonDisplayed");
     }
 
     @Test
     public void test04(){
 
+        extentTest=extentReports.createTest("CreateHotelRoomReservationFormuTesti");
         //add room reservation butonuna tiklanir
         //create hotelroomreservation formu gorunuyor mu diye kontrol edilir
         hotelMyCampMain.addRoomReservationButtonElementi.click();
         hotelMyCampRoomReservation=new HotelMyCampRoomReservation();
         Assert.assertTrue(hotelMyCampRoomReservation.createHotelroomreservatıonFormu.isDisplayed());
+        extentTest.pass("CreateHotelRoomReservationFormuDisplayed");
 
 
     }
@@ -80,6 +83,7 @@ extentTest.pass("HotelManagementButtonDisplayed") ;
     @Test
     public void test05(){
 
+        extentTest=extentReports.createTest("islemOnayTesti");
         //formdaki kutucuklar secilip uygun sekilde doldurulur
         Actions actions=new Actions(Driver.getDriver());
         Faker faker=new Faker();
@@ -110,9 +114,11 @@ extentTest.pass("HotelManagementButtonDisplayed") ;
         //tum kisimlar doldurulduktan sonra formun en altindaki save butonu tiklanir
         //reservation islemi basarili onayi gorulur ve ok butonu tiklanarak islem sonlandirilir
         Assert.assertTrue(hotelMyCampRoomReservation.saveButonu.isDisplayed());
+        extentTest.pass("SaveButtonDisplayed");
         hotelMyCampRoomReservation.saveButonu.click();
         ReusableMethods.waitFor(3);
         Assert.assertTrue(hotelMyCampRoomReservation.reservationOnayYazisi.isDisplayed());
+        extentTest.pass("islemOnayYazisiDisplayed");
         hotelMyCampRoomReservation.onayOkTusu.click();
         Driver.closeDriver();
 
