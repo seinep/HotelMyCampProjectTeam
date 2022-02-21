@@ -139,6 +139,18 @@ public class HotelMyCampHotelRooms {
       @FindBy(xpath = "//textarea[@id='txtBarcode']")
       public  WebElement valuePropertiesElementi;
 
+    @FindBy(xpath = "//button[text()='Save']")
+    public WebElement saveButonuWebElementi1;
+
+    @FindBy(xpath = "//div[text()='HotelRoom was inserted successfully']")
+    public WebElement successfullElementi;
+
+    @FindBy(xpath = "//input[@name='Code']")
+    public WebElement code2Elementi;
+
+    @FindBy(xpath = "//button[@class='btn btn-sm yellow filter-submit margin-bottom']")
+    public WebElement search2Elementi;
+
     public void loginOl() {
 
         Driver.getDriver().get(ConfigReader.getProperty("HMCUrl"));
