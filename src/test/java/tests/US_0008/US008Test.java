@@ -12,10 +12,10 @@ import pages.HotelMyCampRoomReservation;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
 
-
-public class US008Test {
+public class US008Test extends TestBaseRapor {
 
     HotelMyCampRoomReservation hotelMyCampRoomReservation;
     HotelMyCampMain hotelMyCampMain;
@@ -23,6 +23,7 @@ public class US008Test {
 
     @Test
     public void test01() {
+extentTest=extentReports.createTest("LoginTesti");
 
         //siteye gidilir
         Driver.getDriver().get(ConfigReader.getProperty("HMCUrl"));
@@ -34,16 +35,20 @@ public class US008Test {
         hotelMyCampMain.passwordBox.sendKeys(ConfigReader.getProperty("ValidPassword"));
         ReusableMethods.waitFor(2);
         hotelMyCampMain.loginButtonElementi.click();
-
-
+        String expectedUrl="https://www.hotelmycamp.com/Admin/UserAdmin";
+        String actualUrl=Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(actualUrl,expectedUrl);
+extentTest.pass("LoginBasarili");
     }
     @Test
     public void test02(){
+ extentTest=extentReports.createTest("RoomReservationTesti");
 
         //hotel management elementi gorunuyor mu diye bakilir
         //hotel management elementine tiklanir
         //room reservation gorunur mu diye kontrol edilir
         Assert.assertTrue(hotelMyCampMain.hotelManagementButtonElementi.isDisplayed());
+extentTest.pass("HotelManagementButtonDisplayed") ;
         ReusableMethods.waitFor(2);
         hotelMyCampMain.hotelManagementButtonElementi.click();
         ReusableMethods.waitFor(2);
