@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -36,7 +37,7 @@ public class HotelMyCampRoomReservation {
     public WebElement saveButtonProperty;
 
     @FindBy(xpath = "//option[@value='-1']")
-    public WebElement viewAllButtonSecond;
+    public WebElement viewAllButtonSecond2;
 
     @FindBy(xpath = "//tbody//tr")
     public List<WebElement> rawsList2;
@@ -172,8 +173,135 @@ public class HotelMyCampRoomReservation {
 
     //@FindBy(xpath = "")
 
+/////////////////zeynep hoca//////////////
+
+    @FindBy(xpath = "//span[@class='username username-hide-on-mobile']")
+    public WebElement managerLoginTab;
+
+    @FindBy(xpath = "//a[@id='menuYonetim']")
+    public WebElement systemManagementTab;
+
+    @FindBy(xpath = "//a[@id='menuHotels']")
+    public WebElement hotelManagementTab;
+
+    @FindBy(xpath = "//a[@href='/admin/RoomReservationAdmin']")
+    public WebElement roomReservationTab;
+
+    @FindBy(xpath = "//a[text()='List Of Reservations']")
+    public WebElement listOfReservationsYazisi;
+
+    @FindBy(xpath = "//a[text()='Edit Room reservation']")
+    public WebElement editRoomReservationYazisi;
+
+    @FindBy(xpath = "//select[@name='IDHotelRoom']")
+    public WebElement hotelRoom;
+
+    @FindBy(xpath = "//select[@name='IDUser']")
+    public WebElement user;
+
+    @FindBy(xpath = "//input[@name='Price']")
+    public WebElement price;
+
+    @FindBy (xpath = "//input[@id='uniform-Approved']")
+    public WebElement approved;
+
+    @FindBy(xpath = "//input[@id='uniform-IsPaid']")
+    public WebElement isPaid;
+
+    @FindBy(xpath = "//div[text()='Value added']")
+    public WebElement valueAddedMessage;
+
+    @FindBy(xpath = "//button[text()='OK']")
+    public WebElement okButton;
+
+    @FindBy(xpath = "//select[@id='lkpBarcodeTypes']")
+    public WebElement selectTip;
+
+    @FindBy(xpath = "//input[@id='txtBarcodeCode']")
+    public WebElement codeProperty;
+
+    @FindBy(xpath = "//a[@href='#tab_properties']")
+    public WebElement propertiesTab;
+
+    @FindBy(xpath = "//a[@class='btn default btn-sm  margin-bottom-5']")
+    public WebElement removeProperty;
+
+    @FindBy(xpath = "//a[@class='btn default btn-sm']")
+    public WebElement updateProperty;
+
+    @FindBy(xpath = "//input[@id='AdultAmount']")
+    public WebElement adultAmount;
+
+    @FindBy(xpath = "//select[@name='datatable_barcodes_length']")
+    public WebElement viewAllButtonSecond;
+
+    @FindBy(xpath = "//tbody//tr//td[2]//input[@class='form-control']")
+    public WebElement codeUpdate;
+
+    @FindBy(xpath = "//div[text()='Value was updated Succesfully']")
+    public WebElement updatedSuccesfullyMessage;
+
+    @FindBy(xpath = "//button[text()='OK']")
+    public WebElement updatedOkButton;
+
+    @FindBy(xpath = "//div[@class='bootbox-body']")
+    public WebElement deleteWarningMessage;
+
+    @FindBy(xpath = "//button[@data-bb-handler='confirm']")
+    public WebElement deleteConfirmOk;
+
+    @FindBy(xpath = "//div[text()='Value was deleted Succesfully']")
+    public WebElement deletedSuccesfullyMessage;
+
+    @FindBy(xpath = "//button[@class='btn btn-primary']")
+    public WebElement deletedOkButton;
 
 
+    public void detailsButtonGetir(String id) {
+
+        for (int i = 1; i <= rawsList1.size(); i++) {
+            String dinamikHucreXpath1 = "//tbody//tr[" + i + "]//td[" + 1 +"]";
+            WebElement istenenHucreElementi = Driver.getDriver().findElement(By.xpath(dinamikHucreXpath1));
+            String s = istenenHucreElementi.getText();
+
+            if (s.equals(id)) {
+                String dinamikHucreXpath2 = "//tbody//tr[" + i + "]//td[" + 14 + "]";
+                WebElement detailsButton = Driver.getDriver().findElement(By.xpath(dinamikHucreXpath2));
+                detailsButton.click();
+            }
+        }
+
+    }
+
+    public WebElement updateButtongetir() {
+        String dinamikHucreXpath = "";
+        WebElement istenenHucreElementi = null;
+        for (int i = 2; i <= rawsList1.size(); i++) {
+            dinamikHucreXpath = "//tbody//tr[" + i + "]//td[" + 6 + "]//a[@class='btn default btn-sm']";
+            istenenHucreElementi = Driver.getDriver().findElement(By.xpath(dinamikHucreXpath));
+        }
+        return istenenHucreElementi;
+    }
+
+    public WebElement removeButtonGetir() {
+        String dinamikHucreXpath = "";
+        WebElement istenenHucreElementi = null;
+        for (int i = 1; i <= rawsList1.size(); i++) {
+            dinamikHucreXpath = "//tbody//tr[" + i + "]//td[" + 6 + "]//a[@class='btn default btn-sm  margin-bottom-5']";
+            istenenHucreElementi = Driver.getDriver().findElement(By.xpath(dinamikHucreXpath));
+        }
+        return istenenHucreElementi;
+    }
+
+    public WebElement codeUpdateLocate() {
+        String dinamikHucreXpath = "";
+        WebElement istenenHucreElementi = null;
+        for (int i = 3; i <= rawsList1.size(); i++) {
+            dinamikHucreXpath = "//tbody//tr[" + i + "]//td[2]//input[@class='form-control']";
+            istenenHucreElementi = Driver.getDriver().findElement(By.xpath(dinamikHucreXpath));
+        }
+        return istenenHucreElementi;
+    }
 
 
 
