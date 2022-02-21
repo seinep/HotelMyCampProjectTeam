@@ -2,8 +2,8 @@
 <suite name="belirli classlar">
     <test name="classlar">
         <packages>
-            <package name="tests.US_0006"></package>
-            <package name="tests.US_0004"></package>
+
+            <package name="tests.US_0007"></package>
 
         </packages>
     </test>

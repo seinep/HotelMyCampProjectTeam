@@ -71,7 +71,7 @@ public class TestCase04 extends TestBaseRapor {
         hotelMyCampHotelRooms.code2Elementi.sendKeys(idstring);
      //   extentTest.info("US_0006"+"Girdigimiz Code ile Arama yaparak bulabiliriz ekledigimiz odayi");
         hotelMyCampHotelRooms.search2Elementi.click();
-        ReusableMethods.getScreenshot("US_0006 , Ekleme basarili");
+        ReusableMethods.getScreenshot("US_0006/Ekleme basarili");
         extentReports.createTest("US_0006","Odamiz duzgun bir sekilde eklenmistir");
 
 

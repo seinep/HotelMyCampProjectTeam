@@ -55,7 +55,6 @@ extentTest.pass("RoomsButtonDisplayed");
 
         HotelMyCampMainaAnaSayfa hotelMyCampMainaAnaSayfa=new HotelMyCampMainaAnaSayfa();
 
-
         hotelMyCampMainaAnaSayfa.roomsButton.click();
         Assert.assertTrue(hotelMyCampMainaAnaSayfa.roomSayfaControl.isDisplayed());
 

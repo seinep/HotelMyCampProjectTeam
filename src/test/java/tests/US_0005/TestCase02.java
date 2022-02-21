@@ -19,7 +19,7 @@ public class TestCase02 {
     //hmclist.loginOl();
 
     hmclist.hotelManagementButtonElementi.click();
-    ReusableMethods.getScreenshot("deneme");
+    ReusableMethods.getScreenshot("US05/deneme");
     ReusableMethods.waitFor(2);
     hmclist.hotelListButtonElementi.click();
 

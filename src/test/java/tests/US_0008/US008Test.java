@@ -15,14 +15,14 @@ import utilities.ReusableMethods;
 
 
 
-public class TestCase06 {
+public class US008Test {
 
     HotelMyCampRoomReservation hotelMyCampRoomReservation;
     HotelMyCampMain hotelMyCampMain;
 
 
     @Test
-    public void test06() {
+    public void test01() {
 
         //siteye gidilir
         Driver.getDriver().get(ConfigReader.getProperty("HMCUrl"));
@@ -38,7 +38,7 @@ public class TestCase06 {
 
     }
     @Test
-    public void test07(){
+    public void test02(){
 
         //hotel management elementi gorunuyor mu diye bakilir
         //hotel management elementine tiklanir
@@ -52,7 +52,7 @@ public class TestCase06 {
     }
 
     @Test
-    public void test08(){
+    public void test03(){
 
         //room reservation elemntine tiklanir
         //add room reservation butonu gorunuyor mu diye kontrol edilir
@@ -61,7 +61,7 @@ public class TestCase06 {
     }
 
     @Test
-    public void test09(){
+    public void test04(){
 
         //add room reservation butonuna tiklanir
         //create hotelroomreservation formu gorunuyor mu diye kontrol edilir
@@ -73,7 +73,7 @@ public class TestCase06 {
     }
     Select select;
     @Test
-    public void test10(){
+    public void test05(){
 
         //formdaki kutucuklar secilip uygun sekilde doldurulur
         Actions actions=new Actions(Driver.getDriver());
