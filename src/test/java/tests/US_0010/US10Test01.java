@@ -10,10 +10,11 @@ import pages.HotelMyCampMain;
 import pages.HotelMyCampRoomReservation;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
 import java.io.IOException;
 
-public class US10Test01 {
+public class US10Test01 extends TestBaseRapor {
 
     HotelMyCampMain hotelMyCampMain;
     HotelMyCampRoomReservation hotelMyCampRoomReservation;
@@ -25,6 +26,7 @@ public class US10Test01 {
 
     @Test(priority = 1)
     public void listReservationsDisplayed() throws IOException {
+extentTest=extentReports.createTest("ReservationListDisplayedTesti");
         hotelMyCampMain = new HotelMyCampMain();
         hotelMyCampMain.loginOl();
 
@@ -34,7 +36,7 @@ public class US10Test01 {
 
         ReusableMethods.getScreenshot("US10/ListOfReservation");
         Assert.assertTrue(roomReservationButton.isDisplayed());
-
+extentTest.pass("RoomReservationButtonDisplayed");
     }
 
 
@@ -45,24 +47,26 @@ public class US10Test01 {
 
     @Test(priority = 2)
     public void createHotelRoomReservationEnabled() throws IOException {
+extentTest=extentReports.createTest("CreateHotelRoomReservation");
         hotelMyCampRoomReservation = new HotelMyCampRoomReservation();
         hotelMyCampMain.roomReservationButtonElementi.click();
 
         WebElement addRoomReservationButton = hotelMyCampMain.roomReservationButtonElementi;
         Assert.assertTrue(addRoomReservationButton.isEnabled());
-
+extentTest.pass("addRoomReservationButtonEnabled");
         hotelMyCampMain.addRoomReservationButtonElementi.click();
 
         ReusableMethods.getScreenshot("US10/CreateHotelRoomResertation");
 
         WebElement createHotelRoomTextElementi = hotelMyCampRoomReservation.createHotelroomreservationText;
         Assert.assertTrue(createHotelRoomTextElementi.isDisplayed());
-
+extentTest.pass("createHotelRoomTextDisplayed");
     }
 
 
     @Test(priority = 3)
     public void addReservationData() throws IOException {
+extentTest=extentReports.createTest("addRoomReservationData");
         hotelMyCampRoomReservation = new HotelMyCampRoomReservation();
         Actions actions = new Actions(Driver.getDriver());
 
@@ -108,18 +112,18 @@ public class US10Test01 {
 
 
         ReusableMethods.getScreenshot("US10/RoomReservation");
-
+extentTest.info("ReservationBilgileriGirildi");
     }
 
     @Test(priority = 4)
     public void RoomReservationSuccessfully() throws IOException {
-
+extentTest=extentReports.createTest("RoomReservationSuccessfully");
         WebElement saveButton = hotelMyCampRoomReservation.saveButonu;
         saveButton.click();
 
         hotelMyCampMain.bekle(1);
         ReusableMethods.getScreenshot("US10/RoomReservationSuccessfully");
-
+extentTest.info("RoomReservationSuccessfullyText");
         // String expectedText = "RoomReservation was inserted successfully";
         //  String actualText = hotelMyCampRoomReservation.alertYazisiElementi.getText();
 
@@ -133,7 +137,7 @@ public class US10Test01 {
     //Girilen veriler tabloda gorunur
     @Test(priority = 5)
     public void addDataDisplayed() throws IOException {
-
+extentTest=extentReports.createTest("addDataDisplayed");
         Actions actions = new Actions(Driver.getDriver());
         actions.sendKeys(Keys.HOME).perform();
 
@@ -153,16 +157,18 @@ public class US10Test01 {
         hotelMyCampMain.bekle(1);
 
         ReusableMethods.getScreenshot("US10/WebtableSearch");
-
+extentTest.info("WebtableSearchEdildi");
 
         String actualContactName = hotelMyCampRoomReservation.webtableContactName.getText();
         Assert.assertEquals(actualContactName, contactNameSurname);
-
+extentTest.pass("Webtable icinde girilen isim goruldu");
         String actualContactPhone=hotelMyCampRoomReservation.webtableContactPhone.getText();
         Assert.assertEquals(actualContactPhone, contactPhone);
+extentTest.pass("Webtable icinde girilen telefon numarasi goruldu");
 
         String actualContactEmail = hotelMyCampRoomReservation.webtableContactEmail.getText();
         Assert.assertEquals(actualContactEmail,contactEmail);
+extentTest.pass("Webtable icinde girilen email adresi goruldu");
 
 
 Driver.closeDriver();

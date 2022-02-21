@@ -1,20 +1,10 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite name="belirli classlar">
     <test name="classlar">
-        <classes>
-            <!-- yorum yazma -->
-            <class name="tests.US_0005.TestCase01"></class>
-            <class name="tests.US_0005.TestCase02"></class>
-            <class name="tests.US_0005.TestCase03"></class>
-            <class name="tests.US_0005.TestCase04"></class>
-            <class name="tests.US_0005.TestCase05"></class>
-            <class name="tests.US_0007.TestCase01"></class>
-            <class name="tests.US_0007.TestCase02"></class>
-            <class name="tests.US_0007.TestCase03"></class>
-            <class name="tests.US_0007.TestCase04"></class>
-            <class name="tests.US_0007.TestCase05"></class>
-            <class name="tests.US_0008.TestCase06"></class>
+        <packages>
+            <package name="tests.US_0006"></package>
+            <package name="tests.US_0004"></package>
 
-        </classes>
+        </packages>
     </test>
 </suite>

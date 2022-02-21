@@ -7,26 +7,29 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HotelMyCampHotelRooms;
-import utilities.Driver;
+import utilities.TestBaseRapor;
 
 import java.util.List;
 
-public class TestCase05 {
-
-    HotelMyCampHotelRooms hotelMyCampHotelRooms;
-    Select select;
+public class TestCase05 extends TestBaseRapor {
     @Test
-    public void test01() throws InterruptedException {
-        hotelMyCampHotelRooms=new HotelMyCampHotelRooms();
+    public void test05() throws InterruptedException {
+        extentTest=extentReports.createTest("Save-DeleteButonuDisplayed");
+
+        HotelMyCampHotelRooms hotelMyCampHotelRooms=new HotelMyCampHotelRooms();
 
 
-        select=new Select(hotelMyCampHotelRooms.hotelDropDownElementi);
+
+
+
+        Select select=new Select(hotelMyCampHotelRooms.hotelDropDownElementi);
         select.selectByIndex(1);
         String hotelElementiStr=select.getFirstSelectedOption().getText();
         List<WebElement> optionList=select.getOptions();
         for (WebElement each:optionList) {
            if(optionList.contains(hotelElementiStr)){
                Assert.assertTrue(optionList.equals(hotelElementiStr));
+
            }
 
         }
@@ -50,6 +53,7 @@ public class TestCase05 {
         for (WebElement each:optionList2) {
             if(optionList2.contains(roomTypeStr)){
                 Assert.assertTrue(optionList2.equals(roomTypeStr));
+
             }
 
         }
@@ -61,6 +65,7 @@ public class TestCase05 {
         hotelMyCampHotelRooms.saveButonuWebElementi.click();
         Thread.sleep(3000);
         Assert.assertTrue(hotelMyCampHotelRooms.basariliSaveYazisi.isDisplayed());
+        extentTest.pass("SaveBasariliYazisiDisplayed");
         hotelMyCampHotelRooms.OKButonElementi.click();
 
 
@@ -69,10 +74,11 @@ public class TestCase05 {
         hotelMyCampHotelRooms.deleteConfirmButonu.click();
         Thread.sleep(5000);
         Assert.assertTrue(hotelMyCampHotelRooms.basarisizDeleteYazisi.isDisplayed());
+        extentTest.pass("DeleteBasarisizYazisiDisplayed");
         hotelMyCampHotelRooms.OKButonElementi.click();
 
 
-        Driver.closeDriver();
+
 
 
     }

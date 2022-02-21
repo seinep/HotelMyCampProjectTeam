@@ -1,16 +1,12 @@
 package tests.US_0005;
 
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HotelMyCampHotelList;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
 import java.io.IOException;
-import java.util.Set;
 
 public class TestCase02 {
     HotelMyCampHotelList hmclist;

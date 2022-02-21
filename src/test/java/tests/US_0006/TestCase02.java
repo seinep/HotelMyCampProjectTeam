@@ -33,7 +33,7 @@ public class TestCase02 extends TestBaseRapor {
         Assert.assertEquals(actualUrl, expectedUrl);
         extentReports.createTest("US_0006", "Beklenen ve gelen Url'ler ayni");
 
-        ReusableMethods.getScreenshot("US_0006, LoginBasarili");
+        ReusableMethods.getScreenshot("US06/US_0006, LoginBasarili");
         extentReports.createTest("US_0006", "Yonetici olarak siteye giris basarili");
 
     }

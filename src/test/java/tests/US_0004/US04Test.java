@@ -1,5 +1,6 @@
 package tests.US_0004;
 
+import com.github.javafaker.Faker;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -94,7 +95,7 @@ extentTest.pass("add_Hotel_Button_Displayed");
 
     }
 
-
+    String code ="";
 
     @Test(priority = 5)
     public void CreateHotelDisplayed() throws IOException {
@@ -119,7 +120,7 @@ extentTest.pass("Create_Hotel_Yazisi_Beklendigi_Gibi");
             Yukaridaki bilgilerle yeni hotel olusturulacak.
     */
 
-        String code ="13579";
+        code += Faker.instance().number().numberBetween(12345,15000);
         hotelList.addHotelCodeBoxElementi.sendKeys(code);
 
         String hotelName = "Deneme Hotel";
@@ -159,10 +160,11 @@ extentTest.pass("Create_Hotel_Yazisi_Beklendigi_Gibi");
 
     @Test(priority = 6)
     public void hotelAddControl() throws IOException {
-
+extentTest=extentReports.createTest("Yeni_Hotel_Ekleme");
         hotelMyCamp.hotelListButtonElementi.click();
 
-        String code = "13579";
+
+
 
         hotelList.addHotelCodeSearchBoxElementi.sendKeys(code);
         hotelList.addHotelSearchButtonElementi.click();
@@ -182,7 +184,9 @@ extentTest.pass("Create_Hotel_Yazisi_Beklendigi_Gibi");
         ReusableMethods.getScreenshot("US10/search");
 
         Assert.assertEquals(actualNameText, expectedName);
+extentTest.pass("Eklenen Hotel adi tabloda var.");
         Assert.assertEquals(actualPhoneText, expectedPhone);
+extentTest.pass("Eklenen Hotel telefonu tabloda var.");
 
         hotelMyCamp.bekle(1);
 
@@ -190,16 +194,6 @@ extentTest.pass("Create_Hotel_Yazisi_Beklendigi_Gibi");
 
 
     }
-
-
-
-
-
-
-
-
-
-
 
 
 
