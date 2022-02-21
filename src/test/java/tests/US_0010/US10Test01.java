@@ -19,7 +19,7 @@ public class US10Test01 extends TestBaseRapor {
     HotelMyCampMain hotelMyCampMain;
     HotelMyCampRoomReservation hotelMyCampRoomReservation;
 
-//21.022022 bjvıbıbb 557254723 hasan abı candır 4343545465656
+//21.022022 bjvıbıbb 557254723 hasan abı candır 4343545465656ghjszjdas
     //"Hotel Management butonuna tiklandigin da
     //'LIST OF RESERVATIONS' yazisi gorulur"
 
