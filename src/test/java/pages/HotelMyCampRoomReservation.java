@@ -21,7 +21,7 @@ public class HotelMyCampRoomReservation {
 
 
     // US_0009
-    @FindBy(xpath = "//option[@value='-1']")
+    @FindBy(xpath = "//select[@name='datatable_ajax_length']")
     public WebElement viewAllButtonFirst;
 
     @FindBy(xpath = "//tbody//tr")
@@ -49,7 +49,7 @@ public class HotelMyCampRoomReservation {
     public WebElement deleteButton;
 
     @FindBy(xpath ="(//div[@id='frmBody'])[1]")
-    public WebElement createHotelroomreservatıonFormu;
+    public WebElement createHotelroomreservationFormu;
 
     @FindBy(xpath = "(//select[@title='Select User'])[1]")
     public WebElement idUserilk;
@@ -274,7 +274,7 @@ public class HotelMyCampRoomReservation {
     }
 
     public WebElement updateButtongetir() {
-        String dinamikHucreXpath = "";
+        String dinamikHucreXpath ="";
         WebElement istenenHucreElementi = null;
         for (int i = 2; i <= rawsList1.size(); i++) {
             dinamikHucreXpath = "//tbody//tr[" + i + "]//td[" + 6 + "]//a[@class='btn default btn-sm']";

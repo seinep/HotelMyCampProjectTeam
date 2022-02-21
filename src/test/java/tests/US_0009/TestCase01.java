@@ -7,57 +7,54 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HotelMyCampMain;
-import pages.HotelMyCampMainaAnaSayfa;
 import pages.HotelMyCampRoomReservation;
-import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.TestBaseRapor;
 
-public class TestCase01 {
-    HotelMyCampMainaAnaSayfa hotelMyCampMainaAnaSayfa;
+public class TestCase01 extends TestBaseRapor {
     HotelMyCampMain hotelMyCampMain;
     HotelMyCampRoomReservation hotelMyCampRoomReservation;
+    Select select;
 
     @Test
     public void Test01() {
-        //  login control
-        Driver.getDriver().get(ConfigReader.getProperty("HMCUrl"));
-
-        hotelMyCampMainaAnaSayfa = new HotelMyCampMainaAnaSayfa();
-        hotelMyCampMainaAnaSayfa.anasayfaLogin.click();
-
+extentTest=extentReports.createTest("LoginTesti");
         hotelMyCampMain = new HotelMyCampMain();
         hotelMyCampMain.loginOl();
-
         hotelMyCampRoomReservation = new HotelMyCampRoomReservation();
-        hotelMyCampRoomReservation.managerLoginTab.isDisplayed();
-
+        Assert.assertTrue(hotelMyCampRoomReservation.managerLoginTab.isDisplayed());
+extentTest.pass("ManagerOlarakLoginBasarili");
     }
 
-    @Test(dependsOnMethods = "Test01")
+    @Test
     public void Test02() throws InterruptedException {
+extentTest=extentReports.createTest("RoomReservationButtonsDisplayTest");
         // tab control
         Assert.assertTrue(hotelMyCampRoomReservation.systemManagementTab.isDisplayed());
-
+extentTest.pass("SystemManagementButtonDisplayed");
         Assert.assertTrue(hotelMyCampRoomReservation.hotelManagementTab.isDisplayed());
+extentTest.pass("HotelManagementButtonDisplayed");
         Assert.assertTrue(hotelMyCampRoomReservation.hotelManagementTab.isEnabled());
+extentTest.pass("HotelManagementButtonEnabled");
         hotelMyCampRoomReservation.hotelManagementTab.click();
 
         //Assert.assertTrue(hotelMyCampRoomReservation.roomReservationTab.isDisplayed());
         Assert.assertTrue(hotelMyCampRoomReservation.roomReservationTab.isEnabled());
+extentTest.pass("RoomReservationButtonEnabled");
 
         // details button
         hotelMyCampRoomReservation.roomReservationTab.click();
         Thread.sleep(1000);
         Assert.assertTrue(hotelMyCampRoomReservation.listOfReservationsYazisi.isDisplayed());
+extentTest.pass("ListofReservationTextDisplayed");
         Thread.sleep(1000);
 
     }
-    Select select;
     @Test
     public void Test03() throws InterruptedException {
+extentTest=extentReports.createTest("RoomReservationUpdate");
         // General Data
-        Test01();
-        Test02();
+
 
         Driver.getDriver().navigate().refresh();
         Thread.sleep(1000);
@@ -70,12 +67,13 @@ public class TestCase01 {
         Thread.sleep(5000);
 
         Assert.assertTrue(hotelMyCampRoomReservation.editRoomReservationYazisi.isDisplayed());
+extentTest.pass("RoomreservationEditButtonDisplayed");
         Thread.sleep(2000);
 
-        Select select1 = new Select(hotelMyCampRoomReservation.hotelRoom);
-        select1.selectByVisibleText("MustafaDRoom1");
-        Select select2 = new Select(hotelMyCampRoomReservation.user);
-        select2.selectByVisibleText("cev.det");
+        select = new Select(hotelMyCampRoomReservation.hotelRoom);
+        select.selectByVisibleText("MustafaDRoom1");
+        select = new Select(hotelMyCampRoomReservation.user);
+        select.selectByVisibleText("cev.det");
 
         Actions actions = new Actions(Driver.getDriver());
         Faker faker = new Faker();
@@ -114,17 +112,18 @@ public class TestCase01 {
         Thread.sleep(1000);
 
         Assert.assertTrue(hotelMyCampRoomReservation.saveButtonGeneralData.isDisplayed());
+extentTest.pass("SaveButtonDisplayed");
         hotelMyCampRoomReservation.saveButtonGeneralData.click();
         Thread.sleep(1000);
         Assert.assertTrue(hotelMyCampRoomReservation.saveButtonGeneralData.isEnabled());
-
+extentTest.pass("SaveButtonEnabled");
     }
 
     @Test
     public void Test04() throws InterruptedException {
         // property control
-        Test01();
-        Test02();
+       // extentTest=extentReports.createTest("");
+
 
         Driver.getDriver().navigate().refresh();
         Thread.sleep(2000);
@@ -135,7 +134,7 @@ public class TestCase01 {
         hotelMyCampRoomReservation.propertiesTab.click();
         Thread.sleep(1000);
 
-         select = new Select(hotelMyCampRoomReservation.selectTip);
+        select = new Select(hotelMyCampRoomReservation.selectTip);
         select.selectByVisibleText("Reservation property");
         Actions actions = new Actions(Driver.getDriver());
         Faker faker = new Faker();
@@ -201,8 +200,7 @@ public class TestCase01 {
     @Test
     public void Test05() throws InterruptedException {
         // delete reservation
-        Test01();
-        Test02();
+
 
         Driver.getDriver().navigate().refresh();
         Thread.sleep(1000);
