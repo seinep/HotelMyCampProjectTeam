@@ -8,12 +8,13 @@ import pages.HotelMyCampRegistration;
 import utilities.ConfigReader;
 import utilities.Driver;
 
-public class TestCase04 {
+public class US003_04 {
 
-    HotelMyCampRegistration hotelMyCampRegistration = new HotelMyCampRegistration();
+    HotelMyCampRegistration hotelMyCampRegistration;
+    Select select;
     @Test
     public void testcase04(){
-
+        hotelMyCampRegistration = new HotelMyCampRegistration();
         Driver.getDriver().get(ConfigReader.getProperty("HMCUrl"));
         hotelMyCampRegistration.loginButonu.click();
 
@@ -42,11 +43,11 @@ public class TestCase04 {
         Assert.assertTrue(hotelMyCampRegistration.drivingLicenseTextBox.isDisplayed());
         hotelMyCampRegistration.drivingLicenseTextBox.sendKeys(faker.number().digits(9));
         Assert.assertTrue(hotelMyCampRegistration.countryDropdown.isDisplayed());
-        Select select = new Select(hotelMyCampRegistration.countryDropdown);
+        select = new Select(hotelMyCampRegistration.countryDropdown);
         select.selectByVisibleText("United States");
         Assert.assertTrue(hotelMyCampRegistration.stateDropdown.isDisplayed());
-        Select select1 = new Select(hotelMyCampRegistration.stateDropdown);
-        select1.selectByVisibleText("Alabama");
+        select = new Select(hotelMyCampRegistration.stateDropdown);
+        select.selectByVisibleText("Alabama");
         Assert.assertTrue(hotelMyCampRegistration.addresTextBox.isDisplayed());
         hotelMyCampRegistration.addresTextBox.sendKeys(faker.address().fullAddress());
         Assert.assertTrue(hotelMyCampRegistration.workingSectorTextBox.isDisplayed());

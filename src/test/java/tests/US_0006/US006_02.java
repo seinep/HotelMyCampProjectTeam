@@ -13,16 +13,16 @@ import utilities.TestBaseRapor;
 
 import java.io.IOException;
 
-public class TestCase02 extends TestBaseRapor {
+public class US006_02 extends TestBaseRapor {
 
 
-    HotelMyCampMain hotelMyCamp = new HotelMyCampMain();
+    HotelMyCampMain hotelMyCamp;
 
 
 
     @Test
     public void test2() throws IOException, InterruptedException {
-
+        hotelMyCamp = new HotelMyCampMain();
 
         hotelMyCamp.loginOl();
         Thread.sleep(5000);
@@ -31,10 +31,10 @@ public class TestCase02 extends TestBaseRapor {
         String expectedUrl = "https://www.hotelmycamp.com/Admin/UserAdmin";
         String actualUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualUrl, expectedUrl);
-        extentReports.createTest("US_0006", "Beklenen ve gelen Url'ler ayni");
+extentReports.createTest("US_0006", "Beklenen ve gelen Url'ler ayni");
 
         ReusableMethods.getScreenshot("US06/LoginBasarili");
-        extentReports.createTest("US_0006", "Yonetici olarak siteye giris basarili");
+extentReports.createTest("US_0006", "Yonetici olarak siteye giris basarili");
 
     }
 

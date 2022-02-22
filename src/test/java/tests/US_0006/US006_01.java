@@ -23,9 +23,9 @@ import java.util.List;
 import static org.openqa.selenium.Keys.TAB;
 
 
-public class TestCase01 extends TestBaseRapor {
+public class US006_01 extends TestBaseRapor {
     HotelMyCampHotelList hotelList = new HotelMyCampHotelList();
-    HotelMyCampMain hotelMyCamp = new HotelMyCampMain();
+    HotelMyCampMain hotelMyCamp ;
     HotelMyCampHotelRooms hotelMyCampHotelRooms = new HotelMyCampHotelRooms();
 
 
@@ -35,11 +35,12 @@ public class TestCase01 extends TestBaseRapor {
 
     @Test
       public void test1() throws InterruptedException {
+        hotelMyCamp = new HotelMyCampMain();
           Driver.getDriver().get(ConfigReader.getProperty("HMCUrl"));
           Thread.sleep(3000);
-          extentReports.createTest("US_0006","Verilen sitenin Url'i calisyor");
+extentReports.createTest("US_0006","Verilen sitenin Url'i calisyor");
           hotelMyCamp.anasayfaLogin.click();
-          extentReports.createTest("US_0006","Anasayfa login buttonu calisyor");
+extentReports.createTest("US_0006","Anasayfa login buttonu calisyor");
           Driver.getDriver().navigate().back();
 
       }

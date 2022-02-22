@@ -13,7 +13,7 @@ import utilities.TestBaseRapor;
 import java.io.IOException;
 
 
-public class TestCase01 extends TestBaseRapor {
+public class US001_01 extends TestBaseRapor {
     ////1.  https://www.hotelmycamp.com/ adresine gidilir  ve
 //// home,Rooms,Restarurant,AboutBlog,Contact ve Log in butonları görüyor mu dıye bakılır
 

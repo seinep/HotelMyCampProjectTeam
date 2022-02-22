@@ -7,10 +7,12 @@ import pages.HotelMyCampRegistration;
 import utilities.ConfigReader;
 import utilities.Driver;
 
-public class TestCase01 {
-    HotelMyCampRegistration hotelMyCampRegistration = new HotelMyCampRegistration();
+public class US003_01 {
+
+    HotelMyCampRegistration hotelMyCampRegistration;
     @Test
     public void testcase01(){
+        hotelMyCampRegistration = new HotelMyCampRegistration();
         Driver.getDriver().get(ConfigReader.getProperty("HMCUrl"));
         hotelMyCampRegistration.loginButonu.click();
 

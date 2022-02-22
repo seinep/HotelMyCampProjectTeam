@@ -12,23 +12,24 @@ import pages.HotelMyCampMain;
 import utilities.Driver;
 import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
-
 import java.io.IOException;
-
 import static org.openqa.selenium.Keys.TAB;
 
-public class TestCase04 extends TestBaseRapor {
-    HotelMyCampHotelList hotelList = new HotelMyCampHotelList();
-    HotelMyCampMain hotelMyCamp = new HotelMyCampMain();
-    HotelMyCampHotelRooms hotelMyCampHotelRooms = new HotelMyCampHotelRooms();
-    TestCase03 testCase03=new TestCase03();
-    Faker faker = new Faker();
-    public String idstring = faker.idNumber().invalid();
+
+public class US006_04 extends TestBaseRapor {
+
+
+    HotelMyCampHotelRooms hotelMyCampHotelRooms ;
+    Faker faker;
+    public String idstring="";
 
     @Test
     public void test4() throws InterruptedException {
+        faker = new Faker();
+        idstring = faker.idNumber().invalid();
+        hotelMyCampHotelRooms = new HotelMyCampHotelRooms();
         hotelMyCampHotelRooms.addHotelRoomButtonElementi.click();
-    //    extentTest.info("US_0006" + "Add Hotel Room buttonu tiklama basarili");
+extentTest.info("US_0006" + "Add Hotel Room buttonu tiklama basarili");
         Select select = new Select(hotelMyCampHotelRooms.hotelDropDownElementi);
         select.selectByIndex(1);
         Actions action = new Actions(Driver.getDriver());
@@ -53,7 +54,7 @@ public class TestCase04 extends TestBaseRapor {
         action.sendKeys(Keys.DOWN);
         extentReports.createTest("US_0006","Veri girmeleri basarili");
         hotelMyCampHotelRooms.saveButonuWebElementi1.click();
-     //   extentTest.info("US_0006"+"Save buttonuna tiklama basarili");
+extentTest.info("US_0006"+"Save buttonuna tiklama basarili");
         Thread.sleep(3000);
         Assert.assertTrue(hotelMyCampHotelRooms.successfullElementi.isDisplayed());
         extentReports.createTest("US_0006","Save basarili");
@@ -66,14 +67,15 @@ public class TestCase04 extends TestBaseRapor {
     }
     @Test
     public void test5() throws IOException {
-      //  extentTest.info("US_0006"+"Ekledigimiz odanin gercekten eklenip eklenmedigi gorulur");
+extentTest.info("US_0006"+"Ekledigimiz odanin gercekten eklenip eklenmedigi gorulur");
         hotelMyCampHotelRooms.code2Elementi.click();
         hotelMyCampHotelRooms.code2Elementi.sendKeys(idstring);
-     //   extentTest.info("US_0006"+"Girdigimiz Code ile Arama yaparak bulabiliriz ekledigimiz odayi");
+extentTest.info("US_0006"+"Girdigimiz Code ile Arama yaparak bulabiliriz ekledigimiz odayi");
         hotelMyCampHotelRooms.search2Elementi.click();
         ReusableMethods.getScreenshot("US_0006/Ekleme basarili");
         extentReports.createTest("US_0006","Odamiz duzgun bir sekilde eklenmistir");
 
+        Driver.closeDriver();
 
     }
 

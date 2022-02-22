@@ -16,7 +16,7 @@ import utilities.TestBaseRapor;
 
 import java.io.IOException;
 
-public class US04Test extends TestBaseRapor {
+public class US004_01 extends TestBaseRapor {
 
 
     HotelMyCampMain hotelMyCamp;

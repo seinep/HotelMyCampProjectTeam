@@ -1,9 +1,28 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="belirli classlar">
-    <test name="classlar">
+<suite name="TumProje">
+    <test name="Packages">
         <packages>
 
+            <package name="tests.US_0001"></package>
+
+            <package name="tests.US_0002"></package>
+
+            <package name="tests.US_0003"></package>
+
+            <package name="tests.US_0004"></package>
+
+            <package name="tests.US_0005"></package>
+
+            <package name="tests.US_0006"></package>
+
             <package name="tests.US_0007"></package>
+
+            <package name="tests.US_0008"></package>
+
+            <package name="tests.US_0009"></package>
+
+            <package name="tests.US_0010"></package>
+
 
         </packages>
     </test>

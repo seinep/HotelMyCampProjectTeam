@@ -1,7 +1,7 @@
 package tests.US_0003;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.github.javafaker.Faker;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -9,12 +9,13 @@ import pages.HotelMyCampRegistration;
 import utilities.ConfigReader;
 import utilities.Driver;
 
-public class TestCase03 {
+public class US003_05 {
 
-    HotelMyCampRegistration hotelMyCampRegistration = new HotelMyCampRegistration();
+    HotelMyCampRegistration hotelMyCampRegistration;
+    Select select;
     @Test
-    public void testcase03(){
-
+    public void testcase05(){
+        hotelMyCampRegistration = new HotelMyCampRegistration();
         Driver.getDriver().get(ConfigReader.getProperty("HMCUrl"));
         hotelMyCampRegistration.loginButonu.click();
 
@@ -31,7 +32,7 @@ public class TestCase03 {
         Assert.assertTrue(hotelMyCampRegistration.usernameTextBox.isDisplayed());
         hotelMyCampRegistration.usernameTextBox.sendKeys(faker.name().username());
         Assert.assertTrue(hotelMyCampRegistration.passwordTextBox.isDisplayed());
-        hotelMyCampRegistration.passwordTextBox.sendKeys(faker.internet().password());
+        hotelMyCampRegistration.passwordTextBox.sendKeys("Es125687!");
         Assert.assertTrue(hotelMyCampRegistration.emailTextBox.isDisplayed());
         hotelMyCampRegistration.emailTextBox.sendKeys(faker.internet().emailAddress());
         Assert.assertTrue(hotelMyCampRegistration.fullnameTextBox.isDisplayed());
@@ -43,17 +44,26 @@ public class TestCase03 {
         Assert.assertTrue(hotelMyCampRegistration.drivingLicenseTextBox.isDisplayed());
         hotelMyCampRegistration.drivingLicenseTextBox.sendKeys(faker.number().digits(9));
         Assert.assertTrue(hotelMyCampRegistration.countryDropdown.isDisplayed());
-        Select select = new Select(hotelMyCampRegistration.countryDropdown);
+        select = new Select(hotelMyCampRegistration.countryDropdown);
         select.selectByVisibleText("United States");
         Assert.assertTrue(hotelMyCampRegistration.stateDropdown.isDisplayed());
-        Select select1 = new Select(hotelMyCampRegistration.stateDropdown);
-        select1.selectByVisibleText("Alabama");
+        select = new Select(hotelMyCampRegistration.stateDropdown);
+        select.selectByVisibleText("Alabama");
         Assert.assertTrue(hotelMyCampRegistration.addresTextBox.isDisplayed());
         hotelMyCampRegistration.addresTextBox.sendKeys(faker.address().fullAddress());
         Assert.assertTrue(hotelMyCampRegistration.workingSectorTextBox.isDisplayed());
         hotelMyCampRegistration.workingSectorTextBox.sendKeys(faker.job().field());
         Assert.assertTrue(hotelMyCampRegistration.birthDateTextBox.isDisplayed());
         hotelMyCampRegistration.birthDateTextBox.sendKeys("22.03.1999");
+        Assert.assertTrue(hotelMyCampRegistration.saveButton.isDisplayed());
+        hotelMyCampRegistration.saveButton.click();
+        //Assert.assertTrue(hotelMyCampRegistration.sonucYazisiElement.isDisplayed());
+        //String expectedSonucYazisi="User Data was inserted successfully";
+       //System.out.println(hotelMyCampRegistration.sonucYazisiElement.getText());
+       // Assert.assertEquals(hotelMyCampRegistration.sonucYazisiElement.getText(),expectedSonucYazisi);
+        Driver.getDriver().findElement(By.xpath("//button[@class='btn btn-primary']")).click();
+
+
 
 
 

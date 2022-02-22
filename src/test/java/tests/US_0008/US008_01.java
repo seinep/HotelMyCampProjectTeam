@@ -15,7 +15,7 @@ import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
 
 
-public class US008Test extends TestBaseRapor {
+public class US008_01 extends TestBaseRapor {
 
     HotelMyCampRoomReservation hotelMyCampRoomReservation;
     HotelMyCampMain hotelMyCampMain;

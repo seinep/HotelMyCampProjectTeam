@@ -11,7 +11,7 @@ import pages.HotelMyCampRoomReservation;
 import utilities.Driver;
 import utilities.TestBaseRapor;
 
-public class TestCase01 extends TestBaseRapor {
+public class US009_01 extends TestBaseRapor {
     HotelMyCampMain hotelMyCampMain;
     HotelMyCampRoomReservation hotelMyCampRoomReservation;
     Select select;

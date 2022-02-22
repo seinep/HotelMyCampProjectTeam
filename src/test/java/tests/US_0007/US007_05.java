@@ -7,22 +7,23 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HotelMyCampHotelRooms;
+import utilities.Driver;
 import utilities.TestBaseRapor;
 
 import java.util.List;
 
-public class TestCase05 extends TestBaseRapor {
+public class US007_05 extends TestBaseRapor {
+
+    HotelMyCampHotelRooms hotelMyCampHotelRooms;
+    Select select;
     @Test
     public void test05() throws InterruptedException {
         extentTest=extentReports.createTest("Save-DeleteButonuDisplayed");
 
-        HotelMyCampHotelRooms hotelMyCampHotelRooms=new HotelMyCampHotelRooms();
+        hotelMyCampHotelRooms=new HotelMyCampHotelRooms();
 
 
-
-
-
-        Select select=new Select(hotelMyCampHotelRooms.hotelDropDownElementi);
+        select=new Select(hotelMyCampHotelRooms.hotelDropDownElementi);
         select.selectByIndex(1);
         String hotelElementiStr=select.getFirstSelectedOption().getText();
         List<WebElement> optionList=select.getOptions();
@@ -46,10 +47,10 @@ public class TestCase05 extends TestBaseRapor {
         hotelMyCampHotelRooms.priceElementi.clear();
         hotelMyCampHotelRooms.priceElementi.sendKeys("6666");
 
-        Select select2=new Select(hotelMyCampHotelRooms.roomTypeDropDownElementi);
-        select2.selectByIndex(2);
-        String roomTypeStr=select2.getFirstSelectedOption().getText();
-        List<WebElement> optionList2=select2.getOptions();
+        select=new Select(hotelMyCampHotelRooms.roomTypeDropDownElementi);
+        select.selectByIndex(2);
+        String roomTypeStr=select.getFirstSelectedOption().getText();
+        List<WebElement> optionList2=select.getOptions();
         for (WebElement each:optionList2) {
             if(optionList2.contains(roomTypeStr)){
                 Assert.assertTrue(optionList2.equals(roomTypeStr));
@@ -78,7 +79,7 @@ public class TestCase05 extends TestBaseRapor {
         hotelMyCampHotelRooms.OKButonElementi.click();
 
 
-
+        Driver.closeDriver();
 
 
     }
