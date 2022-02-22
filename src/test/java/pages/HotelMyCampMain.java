@@ -185,6 +185,10 @@ public void loginOl(){
     @FindBy(xpath = "//div[@class='caption']")
     public WebElement createHotelTextElementi;
 
+    @FindBy(xpath = "//label[@for='Password']")
+    public WebElement passWordUyariMesaj3Salih;
+
+
 
 
 }
