@@ -1,16 +1,11 @@
 package tests.US_0006;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
-import pages.HotelMyCampHotelList;
-import pages.HotelMyCampHotelRooms;
 import pages.HotelMyCampMain;
-import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
-
 import java.io.IOException;
 
 public class US006_02 extends TestBaseRapor {

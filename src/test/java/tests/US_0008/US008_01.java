@@ -8,7 +8,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HotelMyCampMain;
 import pages.HotelMyCampRoomReservation;
-
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;

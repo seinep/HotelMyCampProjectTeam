@@ -1,10 +1,10 @@
 package tests.US_0006;
 
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HotelMyCampHotelRooms;
 import utilities.TestBaseRapor;
+
 public class US006_03 extends TestBaseRapor {
 
     HotelMyCampHotelRooms hotelMyCampHotelRooms;

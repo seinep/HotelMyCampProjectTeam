@@ -3,8 +3,6 @@ package tests.US_0001;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import pages.HotelMyCampMainaAnaSayfa;
 import utilities.Driver;

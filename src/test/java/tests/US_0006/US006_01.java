@@ -1,26 +1,12 @@
 package tests.US_0006;
 
-import com.github.javafaker.Faker;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import pages.HotelMyCampHotelList;
 import pages.HotelMyCampHotelRooms;
 import pages.HotelMyCampMain;
 import utilities.ConfigReader;
 import utilities.Driver;
-import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
-
-import java.io.IOException;
-import java.util.List;
-
-import static org.openqa.selenium.Keys.TAB;
 
 
 public class US006_01 extends TestBaseRapor {

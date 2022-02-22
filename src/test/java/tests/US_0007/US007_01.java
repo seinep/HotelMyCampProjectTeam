@@ -2,8 +2,6 @@ package tests.US_0007;
 
 import org.testng.annotations.Test;
 import pages.HotelMyCampHotelRooms;
-import utilities.ConfigReader;
-import utilities.Driver;
 import utilities.TestBaseRapor;
 
 public class US007_01 extends TestBaseRapor {
