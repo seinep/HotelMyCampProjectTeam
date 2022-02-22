@@ -1,6 +1,7 @@
 package tests.US_0009;
 
 import com.github.javafaker.Faker;
+import org.apache.poi.ss.formula.functions.T;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
@@ -9,54 +10,54 @@ import org.testng.annotations.Test;
 import pages.HotelMyCampMain;
 import pages.HotelMyCampRoomReservation;
 import utilities.Driver;
+import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
 
-public class US009_01 extends TestBaseRapor {
+import java.io.IOException;
+
+public class US009_Test01 extends TestBaseRapor {
+
     HotelMyCampMain hotelMyCampMain;
     HotelMyCampRoomReservation hotelMyCampRoomReservation;
     Select select;
 
-    @Test
-    public void Test01() {
-extentTest=extentReports.createTest("LoginTesti");
+    @Test (priority = 1)
+    public void Test01() throws InterruptedException, IOException {
+
+        extentTest = extentReports.createTest("AdminLogin");
         hotelMyCampMain = new HotelMyCampMain();
         hotelMyCampMain.loginOl();
+        Thread.sleep(1000);
+
         hotelMyCampRoomReservation = new HotelMyCampRoomReservation();
         Assert.assertTrue(hotelMyCampRoomReservation.managerLoginTab.isDisplayed());
-extentTest.pass("ManagerOlarakLoginBasarili");
+        extentTest.pass("AdminOlarakLoginBasarili");
+
+        ReusableMethods.getScreenshot("US09/AdminLogin");
+
     }
 
-    @Test
-    public void Test02() throws InterruptedException {
-extentTest=extentReports.createTest("RoomReservationButtonsDisplayTest");
-        // tab control
+    @Test (dependsOnMethods = "Test01")
+    public void Test02() throws InterruptedException, IOException {
+
+        extentTest = extentReports.createTest("EditRoomReservationDisplayTest");
         Assert.assertTrue(hotelMyCampRoomReservation.systemManagementTab.isDisplayed());
-extentTest.pass("SystemManagementButtonDisplayed");
+        extentTest.pass("SystemManagementTabDisplayed");
+        Thread.sleep(1000);
         Assert.assertTrue(hotelMyCampRoomReservation.hotelManagementTab.isDisplayed());
-extentTest.pass("HotelManagementButtonDisplayed");
+        extentTest.pass("HotelManagementTabDisplayed");
+        Thread.sleep(1000);
         Assert.assertTrue(hotelMyCampRoomReservation.hotelManagementTab.isEnabled());
-extentTest.pass("HotelManagementButtonEnabled");
+        extentTest.pass("HotelManagementButtonEnabled");
         hotelMyCampRoomReservation.hotelManagementTab.click();
-
-        //Assert.assertTrue(hotelMyCampRoomReservation.roomReservationTab.isDisplayed());
+        extentTest.pass("HotelManagementTabClicked");
+        Thread.sleep(1000);
+        extentTest.pass("RoomReservationTabEnabled");
         Assert.assertTrue(hotelMyCampRoomReservation.roomReservationTab.isEnabled());
-extentTest.pass("RoomReservationButtonEnabled");
 
-        // details button
         hotelMyCampRoomReservation.roomReservationTab.click();
-        Thread.sleep(1000);
         Assert.assertTrue(hotelMyCampRoomReservation.listOfReservationsYazisi.isDisplayed());
-extentTest.pass("ListofReservationTextDisplayed");
-        Thread.sleep(1000);
-
-    }
-    @Test
-    public void Test03() throws InterruptedException {
-extentTest=extentReports.createTest("RoomReservationUpdate");
-        // General Data
-
-
-        Driver.getDriver().navigate().refresh();
+        extentTest.pass("ListofReservationsTextDisplayed");
         Thread.sleep(1000);
 
         select = new Select(hotelMyCampRoomReservation.viewAllButtonFirst);
@@ -64,11 +65,24 @@ extentTest=extentReports.createTest("RoomReservationUpdate");
         Thread.sleep(3000);
 
         hotelMyCampRoomReservation.detailsButtonGetir("1111");
-        Thread.sleep(5000);
+        Thread.sleep(3000);
 
         Assert.assertTrue(hotelMyCampRoomReservation.editRoomReservationYazisi.isDisplayed());
-extentTest.pass("RoomreservationEditButtonDisplayed");
-        Thread.sleep(2000);
+        extentTest.pass("EditRoomReservationDisplayed");
+        Thread.sleep(1000);
+
+        ReusableMethods.getScreenshot("US09/EditRoomReservationTextDisplayed");
+
+    }
+
+    @Test
+    public void Test03() throws InterruptedException, IOException {
+        extentTest = extentReports.createTest("SaveGeneralData");
+        Test01();
+        Test02();
+
+        Driver.getDriver().navigate().refresh();
+        Thread.sleep(1000);
 
         select = new Select(hotelMyCampRoomReservation.hotelRoom);
         select.selectByVisibleText("MustafaDRoom1");
@@ -98,12 +112,12 @@ extentTest.pass("RoomreservationEditButtonDisplayed");
                 .sendKeys(Keys.PAGE_DOWN)
                 .perform();
 
-        //hotelMyCampRoomReservation.approved.click();
-       // Thread.sleep(1000);
-       // hotelMyCampRoomReservation.isPaid.click();
-       // Thread.sleep(1000);
+        // hotelMyCampRoomReservation.approved.click();
+        // Thread.sleep(1000);
+        // hotelMyCampRoomReservation.isPaid.click();
+        // Thread.sleep(1000);
 
-      /*Assert.assertFalse(hotelMyCampRoomReservation.approved.isEnabled());
+       /*Assert.assertFalse(hotelMyCampRoomReservation.approved.isEnabled());
         Assert.assertFalse(hotelMyCampRoomReservation.isPaid.isEnabled());
 
         Assert.assertFalse(hotelMyCampRoomReservation.approved.isSelected());
@@ -112,25 +126,29 @@ extentTest.pass("RoomreservationEditButtonDisplayed");
         Thread.sleep(1000);
 
         Assert.assertTrue(hotelMyCampRoomReservation.saveButtonGeneralData.isDisplayed());
-extentTest.pass("SaveButtonDisplayed");
+        extentTest.pass("SaveButtonGeneralDataDisplayed");
         hotelMyCampRoomReservation.saveButtonGeneralData.click();
         Thread.sleep(1000);
         Assert.assertTrue(hotelMyCampRoomReservation.saveButtonGeneralData.isEnabled());
-extentTest.pass("SaveButtonEnabled");
+        extentTest.pass("SaveButtonGeneralDataNotWork");
+
+        ReusableMethods.getScreenshot("US09/SaveGeneralData");
+
     }
 
-    @Test
-    public void Test04() throws InterruptedException {
-        // property control
-       // extentTest=extentReports.createTest("");
 
+    @Test //(dependsOnMethods = "Test03")
+    public void Test04() throws InterruptedException, IOException {
+        Test01();
+        Test02();
+extentTest = extentReports.createTest("PropertySaveControl");
 
         Driver.getDriver().navigate().refresh();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
-        // save property
         Assert.assertTrue(hotelMyCampRoomReservation.propertiesTab.isDisplayed());
         Thread.sleep(1000);
+extentTest.pass("PropertiesTabDisplayed");
         hotelMyCampRoomReservation.propertiesTab.click();
         Thread.sleep(1000);
 
@@ -147,15 +165,20 @@ extentTest.pass("SaveButtonEnabled");
 
         Assert.assertTrue(hotelMyCampRoomReservation.saveButtonProperty.isDisplayed());
         Thread.sleep(1000);
+extentTest.pass("SaveButtonPropertyDisplayed");
         hotelMyCampRoomReservation.saveButtonProperty.click();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         Assert.assertTrue(hotelMyCampRoomReservation.valueAddedMessage.isDisplayed());
+extentTest.pass("ValueAddedMessageDisplayed");
         Thread.sleep(1000);
         hotelMyCampRoomReservation.okButton.click();
         Thread.sleep(1000);
+extentTest.pass("PropertySaved");
+
+        ReusableMethods.getScreenshot("US09/SaveProperty");
 
 
-        // remove property
+        extentTest = extentReports.createTest("RemoveProperty");
         Driver.getDriver().navigate().refresh();
         Thread.sleep(2000);
         hotelMyCampRoomReservation.propertiesTab.click();
@@ -165,22 +188,28 @@ extentTest.pass("SaveButtonEnabled");
         Thread.sleep(1000);
         Assert.assertTrue(hotelMyCampRoomReservation.deleteWarningMessage.isDisplayed());
         Thread.sleep(1000);
+        extentTest.pass("DeleteWarningMessageDisplayed");
         hotelMyCampRoomReservation.deleteConfirmOk.click();
         Thread.sleep(1000);
         Assert.assertTrue(hotelMyCampRoomReservation.deletedSuccesfullyMessage.isDisplayed());
         Thread.sleep(1000);
+        extentTest.pass("DeletedSuccesfullyMessageDisplayed");
         hotelMyCampRoomReservation.deletedOkButton.click();
         Thread.sleep(1000);
+        extentTest.pass("PropertyRemoved");
 
-        // update property
+        ReusableMethods.getScreenshot("US09/RemoveProperty");
+
+
+        extentTest = extentReports.createTest("PropertyUpdate");
         Driver.getDriver().navigate().refresh();
         Thread.sleep(2000);
         hotelMyCampRoomReservation.propertiesTab.click();
         Thread.sleep(2000);
 
-        Select option2 = new Select(hotelMyCampRoomReservation.viewAllButtonSecond);
-        option2.selectByVisibleText("All");
-        Thread.sleep(1000);
+        select = new Select(hotelMyCampRoomReservation.viewAllButtonSecond);
+        select.selectByVisibleText("All");
+        Thread.sleep(2000);
 
         actions.click(hotelMyCampRoomReservation.codeUpdateLocate())
                 .sendKeys(faker.code().asin())
@@ -192,32 +221,42 @@ extentTest.pass("SaveButtonEnabled");
         Thread.sleep(1000);
         Assert.assertTrue(hotelMyCampRoomReservation.updatedSuccesfullyMessage.isDisplayed());
         Thread.sleep(2000);
+        extentTest.pass("UpdatedSuccesfullyMessageDisplayed");
         hotelMyCampRoomReservation.updatedOkButton.click();
         Thread.sleep(1000);
+        extentTest.pass("PropertyUpdated");
+
+        ReusableMethods.getScreenshot("US09/UpdateProperty");
 
     }
 
-    @Test
-    public void Test05() throws InterruptedException {
-        // delete reservation
+    @Test //(dependsOnMethods = "Test03")
+    public void Test05() throws InterruptedException, IOException {
+        Test01();
+        Test02();
 
+        extentTest = extentReports.createTest("DeleteReservation");
 
         Driver.getDriver().navigate().refresh();
         Thread.sleep(1000);
 
         Actions actions = new Actions(Driver.getDriver());
-        actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).build().perform();
+        actions.sendKeys(Keys.PAGE_DOWN).build().perform();
         Assert.assertTrue(hotelMyCampRoomReservation.deleteButton.isDisplayed());
-        Thread.sleep(1000);
+        Thread.sleep(2000);
+        extentTest.pass("DeleteButtonDisplayed");
         hotelMyCampRoomReservation.deleteButton.click();
         Thread.sleep(1000);
         Assert.assertTrue(hotelMyCampRoomReservation.deleteButton.isEnabled());
         Thread.sleep(1000);
-
+        extentTest.pass("DeleteButtonEnabled");
         Driver.getDriver().navigate().refresh();
         Thread.sleep(1000);
+        extentTest.pass("ReservationNotDeleted");
 
-        Driver.closeDriver();
+        ReusableMethods.getScreenshot("US09/DeleteReservation");
+
+        hotelMyCampMain.tearDown();
 
     }
 
