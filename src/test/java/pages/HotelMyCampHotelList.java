@@ -175,6 +175,15 @@ public class HotelMyCampHotelList {
  @FindBy(xpath = "//tbody/tr[1]/td[5]")
  public WebElement webtablePhoneBox;
 
+ @FindBy(xpath = "(//a[@class='btn btn-xs default'])[2]")
+ public WebElement detailsHotelListButonu2;
+
+ @FindBy(xpath = "//button[text()='Delete']")
+ public WebElement deleteHotelButonu;
+
+ @FindBy(xpath = "//button[text()='OK']")
+ public WebElement deleteAlertOKButonu;
+
 
  public void loginOl() {
 
