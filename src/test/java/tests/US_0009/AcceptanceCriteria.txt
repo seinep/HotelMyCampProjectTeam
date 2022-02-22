@@ -1,0 +1,18 @@
+1-) https://www.hotelmycamp.com anasayfasinda 'Log in' butonu görünür olmali. 'Log in' butonuna tiklayip gecerli
+manager account bilgilerini girerek 'admin' sayfasina erisim saglanabilmeli. Yönlendirilen sayfada solda
+'System Management' menüsü görünür olmali. Altindaki 'Hotel Management' sekmesi görünür olmali ve tiklanabilmeli.
+Bu sekme altindaki 'Room Reservations' butonu görünür ve tiklanabilir olmali.
+
+2-) 'Room Reservations' sekmesine tiklaninca acilan yeni sayfada 'List of Reservations' basligi altindaki Web Table
+görünür olmali ve tablo üzerinden rezervasyon bilgilerine erisim saglanabilmeli. Rezervasyon bilgilerini güncelleyebilmek
+ve silebilmek icin satir sonlarindaki 'DETAILS' buttonu görünür ve tiklanabilir olmali.
+
+3-)'DETAILS' butonuna tiklandiktan sonra acilan sayfada 'Edit Hotelroomreservation' baslikli web formu görünür olmali.
+Tablodaki 'General Data' baslikli navigasyon sekmesi tiklanabilir olmali ve altindaki 'Hotelroom reservation Data'
+bilgileri güncellenebilmeli. Yapilan düzenlemeler 'SAVE' butonuyla kaydedilebilmeli.
+
+4-) Tablodaki 'Properties' baslikli navigasyon sekmesi tiklanabilmeli. Tiklandiktan sonra 'Add Property' basligi
+altindaki form bilgileri güncellenebilmeli ve düzenlemeler 'SAVE' butonuyla kaydedilebilmeli.
+
+5-) 'List of Reservations' sayfasindaki 'Delete Hotel room Reservation' menüsü altindaki 'DELETE'  butonu görünür
+olmali ve butona tiklandiginda rezervasyon silinebilmeli.
