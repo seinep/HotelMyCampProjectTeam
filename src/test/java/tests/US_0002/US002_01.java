@@ -26,7 +26,7 @@ public class US002_01 extends TestBaseRapor {
 
         Driver.getDriver().get(ConfigReader.getProperty("HMCUrl"));
         Assert.assertTrue(loginPage.logInButon.isDisplayed());
-        ReusableMethods.getScreenshot("logInButon");
+        ReusableMethods.getScreenshot("US02/logInButon");
         System.out.println("Yes, indeed is the login button displayed");
 
         //Driver.closeDriver();
@@ -55,7 +55,7 @@ public class US002_01 extends TestBaseRapor {
         //Driver.getDriver().get(ConfigReader.getProperty("HMCUrl"));
         //loginPage.logInButon.click();
         Assert.assertTrue(loginPage.logInYazisi.isDisplayed());
-        ReusableMethods.getScreenshot("logInYazisi");
+        ReusableMethods.getScreenshot("US02/logInYazisi");
         System.out.println("Yes, indeed is the white login text displayed");
         //Driver.closeDriver();
         //Anasayfadaki Log in butonuna tiklandiginda Log in sayfasinin
@@ -72,7 +72,7 @@ public class US002_01 extends TestBaseRapor {
         loginPage.loginButtonElementi.click();
         String actualAfterLoginPageURL = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualAfterLoginPageURL, "https://www.hotelmycamp.com/Admin/UserAdmin");
-        ReusableMethods.getScreenshot("loginButtonElementi");
+        ReusableMethods.getScreenshot("US02/loginButtonElementi");
         //Driver.closeDriver();
         //Gecerli kullanici adi ve sifre girilip Log in buttonuna tiklandiginda
         //basarili bir sekilde giris yapilabilmeli-AC2
@@ -88,7 +88,7 @@ public class US002_01 extends TestBaseRapor {
         //loginPage.loginButtonElementi.click();
         String actualListOfUsersText = loginPage.listOfUsersYazisi.getText();
         Assert.assertEquals(actualListOfUsersText, "LISTOFUSERS");
-        ReusableMethods.getScreenshot("listOfUsersYazisi");
+        ReusableMethods.getScreenshot("US02/listOfUsersYazisi");
         System.out.println("Yes, indeed is the LISTOFUSERS text displayed");
         //Driver.closeDriver();
         //Gecerli kullanici adi ve sifre girilip Log in buttonuna tiklandiginda
@@ -108,7 +108,7 @@ public class US002_01 extends TestBaseRapor {
         Assert.assertTrue(actualErrorMessageText.contains("Try again please"));
         Assert.assertTrue(actualErrorMessageText.contains("Username or password is incorrect, please" +
                 " correct them and try again"));
-        ReusableMethods.getScreenshot("errorMesaj1");
+        ReusableMethods.getScreenshot("US02/errorMesaj1");
 
         System.out.println("The error message is : "+actualErrorMessageText);
         System.out.println("Yes, indeed is the error message text displayed");
