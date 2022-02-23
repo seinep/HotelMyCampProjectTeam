@@ -6,7 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class HotelMyCampRoomReservation {
 
@@ -190,7 +192,7 @@ public class HotelMyCampRoomReservation {
     @FindBy(xpath = "//a[text()='List Of Reservations']")
     public WebElement listOfReservationsYazisi;
 
-    @FindBy(xpath = "//a[text()='Edit Room reservation']")
+    @FindBy(xpath = "//div[@class='page-bar']")
     public WebElement editRoomReservationYazisi;
 
     @FindBy(xpath = "//select[@name='IDHotelRoom']")
@@ -256,25 +258,40 @@ public class HotelMyCampRoomReservation {
     @FindBy(xpath = "//button[@class='btn btn-primary']")
     public WebElement deletedOkButton;
 
+    @FindBy(xpath = "//tbody//tr//td[1]")
+    public WebElement firstData;
+
 
     public void detailsButtonGetir(String id) {
+        String dinamikHucreXpath1, dinamikHucreXpath2;
+        WebElement istenenHucreElementi, detailsButton;
+        String s;
 
         for (int i = 1; i <= rawsList1.size(); i++) {
-            String dinamikHucreXpath1 = "//tbody//tr[" + i + "]//td[" + 1 +"]";
-            WebElement istenenHucreElementi = Driver.getDriver().findElement(By.xpath(dinamikHucreXpath1));
-            String s = istenenHucreElementi.getText();
+            dinamikHucreXpath1 = "//tbody//tr[" + i + "]//td[" + 1 +"]";
+            istenenHucreElementi = Driver.getDriver().findElement(By.xpath(dinamikHucreXpath1));
+            s = istenenHucreElementi.getText();
 
             if (s.equals(id)) {
-                String dinamikHucreXpath2 = "//tbody//tr[" + i + "]//td[" + 14 + "]";
-                WebElement detailsButton = Driver.getDriver().findElement(By.xpath(dinamikHucreXpath2));
+                dinamikHucreXpath2 = "//tbody//tr[" + i + "]//td[" + 14 + "]";
+                detailsButton = Driver.getDriver().findElement(By.xpath(dinamikHucreXpath2));
                 detailsButton.click();
             }
         }
-
     }
 
+
+    public String idGetir() {
+        String id;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Id numarasi giriniz : ");
+        id = sc.next();
+        return id;
+    }
+
+
     public WebElement updateButtongetir() {
-        String dinamikHucreXpath ="";
+        String dinamikHucreXpath;
         WebElement istenenHucreElementi = null;
         for (int i = 2; i <= rawsList1.size(); i++) {
             dinamikHucreXpath = "//tbody//tr[" + i + "]//td[" + 6 + "]//a[@class='btn default btn-sm']";
@@ -283,8 +300,9 @@ public class HotelMyCampRoomReservation {
         return istenenHucreElementi;
     }
 
+
     public WebElement removeButtonGetir() {
-        String dinamikHucreXpath = "";
+        String dinamikHucreXpath;
         WebElement istenenHucreElementi = null;
         for (int i = 1; i <= rawsList1.size(); i++) {
             dinamikHucreXpath = "//tbody//tr[" + i + "]//td[" + 6 + "]//a[@class='btn default btn-sm  margin-bottom-5']";
@@ -293,18 +311,15 @@ public class HotelMyCampRoomReservation {
         return istenenHucreElementi;
     }
 
+
     public WebElement codeUpdateLocate() {
-        String dinamikHucreXpath = "";
+        String dinamikHucreXpath;
         WebElement istenenHucreElementi = null;
-        for (int i = 3; i <= rawsList1.size(); i++) {
+        for (int i = 1; i <= rawsList1.size(); i++) {
             dinamikHucreXpath = "//tbody//tr[" + i + "]//td[2]//input[@class='form-control']";
             istenenHucreElementi = Driver.getDriver().findElement(By.xpath(dinamikHucreXpath));
         }
         return istenenHucreElementi;
     }
-
-
-
-
 
 }
