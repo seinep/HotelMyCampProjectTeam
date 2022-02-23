@@ -37,7 +37,7 @@ public class US009_Test01 extends TestBaseRapor {
 
     }
 
-    @Test (dependsOnMethods = "Test01")
+    @Test (priority = 2)
     public void Test02() throws InterruptedException, IOException {
 
         extentTest = extentReports.createTest("EditRoomReservationDisplayTest");
@@ -51,7 +51,7 @@ public class US009_Test01 extends TestBaseRapor {
         extentTest.pass("HotelManagementButtonEnabled");
         hotelMyCampRoomReservation.hotelManagementTab.click();
         extentTest.pass("HotelManagementTabClicked");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         extentTest.pass("RoomReservationTabEnabled");
         Assert.assertTrue(hotelMyCampRoomReservation.roomReservationTab.isEnabled());
 
@@ -62,10 +62,12 @@ public class US009_Test01 extends TestBaseRapor {
 
         select = new Select(hotelMyCampRoomReservation.viewAllButtonFirst);
         select.selectByVisibleText("All");
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
-        hotelMyCampRoomReservation.detailsButtonGetir("1111");
-        Thread.sleep(3000);
+        String id = hotelMyCampRoomReservation.idGetir();
+        Thread.sleep(1000);
+        hotelMyCampRoomReservation.detailsButtonGetir(id);
+        Thread.sleep(2000);
 
         Assert.assertTrue(hotelMyCampRoomReservation.editRoomReservationYazisi.isDisplayed());
         extentTest.pass("EditRoomReservationDisplayed");
@@ -75,20 +77,10 @@ public class US009_Test01 extends TestBaseRapor {
 
     }
 
-    @Test
+    @Test (priority = 3)
     public void Test03() throws InterruptedException, IOException {
+
         extentTest = extentReports.createTest("SaveGeneralData");
-        Test01();
-        Test02();
-
-        Driver.getDriver().navigate().refresh();
-        Thread.sleep(1000);
-
-        select = new Select(hotelMyCampRoomReservation.hotelRoom);
-        select.selectByVisibleText("MustafaDRoom1");
-        select = new Select(hotelMyCampRoomReservation.user);
-        select.selectByVisibleText("cev.det");
-
         Actions actions = new Actions(Driver.getDriver());
         Faker faker = new Faker();
         actions.click(hotelMyCampRoomReservation.price)
@@ -117,11 +109,11 @@ public class US009_Test01 extends TestBaseRapor {
         // hotelMyCampRoomReservation.isPaid.click();
         // Thread.sleep(1000);
 
-       /*Assert.assertFalse(hotelMyCampRoomReservation.approved.isEnabled());
-        Assert.assertFalse(hotelMyCampRoomReservation.isPaid.isEnabled());
+        // Assert.assertFalse(hotelMyCampRoomReservation.approved.isEnabled());
+        // Assert.assertFalse(hotelMyCampRoomReservation.isPaid.isEnabled());
 
-        Assert.assertFalse(hotelMyCampRoomReservation.approved.isSelected());
-        Assert.assertFalse(hotelMyCampRoomReservation.isPaid.isSelected());*/
+        // Assert.assertTrue(hotelMyCampRoomReservation.approved.isSelected());
+        // Assert.assertTrue(hotelMyCampRoomReservation.isPaid.isSelected());
 
         Thread.sleep(1000);
 
@@ -137,10 +129,9 @@ public class US009_Test01 extends TestBaseRapor {
     }
 
 
-    @Test //(dependsOnMethods = "Test03")
+    @Test (priority = 4)
     public void Test04() throws InterruptedException, IOException {
-        Test01();
-        Test02();
+
 extentTest = extentReports.createTest("PropertySaveControl");
 
         Driver.getDriver().navigate().refresh();
@@ -175,6 +166,33 @@ extentTest.pass("ValueAddedMessageDisplayed");
         Thread.sleep(1000);
 extentTest.pass("PropertySaved");
 
+
+        extentTest = extentReports.createTest("PropertyUpdate");
+        Driver.getDriver().navigate().refresh();
+        Thread.sleep(2000);
+        hotelMyCampRoomReservation.propertiesTab.click();
+        Thread.sleep(2000);
+
+        select = new Select(hotelMyCampRoomReservation.viewAllButtonSecond);
+        select.selectByVisibleText("All");
+        Thread.sleep(2000);
+
+        actions.click(hotelMyCampRoomReservation.codeUpdateLocate())
+                .sendKeys(faker.code().asin())
+                .sendKeys(Keys.TAB)
+                .sendKeys(faker.expression("Update"))
+                .perform();
+
+        Thread.sleep(1000);
+        hotelMyCampRoomReservation.updateButtongetir().click();
+        Thread.sleep(1000);
+        Assert.assertTrue(hotelMyCampRoomReservation.updatedSuccesfullyMessage.isDisplayed());
+        Thread.sleep(2000);
+        extentTest.pass("UpdatedSuccesfullyMessageDisplayed");
+        hotelMyCampRoomReservation.updatedOkButton.click();
+        Thread.sleep(1000);
+        extentTest.pass("PropertyUpdated");
+
         ReusableMethods.getScreenshot("US09/SaveProperty");
 
 
@@ -200,40 +218,12 @@ extentTest.pass("PropertySaved");
 
         ReusableMethods.getScreenshot("US09/RemoveProperty");
 
-
-        extentTest = extentReports.createTest("PropertyUpdate");
-        Driver.getDriver().navigate().refresh();
-        Thread.sleep(2000);
-        hotelMyCampRoomReservation.propertiesTab.click();
-        Thread.sleep(2000);
-
-        select = new Select(hotelMyCampRoomReservation.viewAllButtonSecond);
-        select.selectByVisibleText("All");
-        Thread.sleep(2000);
-
-        actions.click(hotelMyCampRoomReservation.codeUpdateLocate())
-                .sendKeys(faker.code().asin())
-                .sendKeys(Keys.TAB)
-                .sendKeys(faker.expression("Update"))
-                .perform();
-
-        hotelMyCampRoomReservation.updateButtongetir().click();
-        Thread.sleep(1000);
-        Assert.assertTrue(hotelMyCampRoomReservation.updatedSuccesfullyMessage.isDisplayed());
-        Thread.sleep(2000);
-        extentTest.pass("UpdatedSuccesfullyMessageDisplayed");
-        hotelMyCampRoomReservation.updatedOkButton.click();
-        Thread.sleep(1000);
-        extentTest.pass("PropertyUpdated");
-
         ReusableMethods.getScreenshot("US09/UpdateProperty");
 
     }
 
-    @Test //(dependsOnMethods = "Test03")
+    @Test (priority = 5)
     public void Test05() throws InterruptedException, IOException {
-        Test01();
-        Test02();
 
         extentTest = extentReports.createTest("DeleteReservation");
 
