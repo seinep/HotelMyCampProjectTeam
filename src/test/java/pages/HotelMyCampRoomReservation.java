@@ -8,7 +8,7 @@ import utilities.Driver;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import java.util.Random;
 
 public class HotelMyCampRoomReservation {
 
@@ -262,7 +262,7 @@ public class HotelMyCampRoomReservation {
     public WebElement firstData;
 
 
-    public void detailsButtonGetir(String id) {
+    public void detailsButtonGetir(int id) {
         String dinamikHucreXpath1, dinamikHucreXpath2;
         WebElement istenenHucreElementi, detailsButton;
         String s;
@@ -271,8 +271,9 @@ public class HotelMyCampRoomReservation {
             dinamikHucreXpath1 = "//tbody//tr[" + i + "]//td[" + 1 +"]";
             istenenHucreElementi = Driver.getDriver().findElement(By.xpath(dinamikHucreXpath1));
             s = istenenHucreElementi.getText();
+            int x = Integer.parseInt(s);
 
-            if (s.equals(id)) {
+            if (x == id) {
                 dinamikHucreXpath2 = "//tbody//tr[" + i + "]//td[" + 14 + "]";
                 detailsButton = Driver.getDriver().findElement(By.xpath(dinamikHucreXpath2));
                 detailsButton.click();
@@ -281,19 +282,38 @@ public class HotelMyCampRoomReservation {
     }
 
 
-    public String idGetir() {
-        String id;
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Id numarasi giriniz : ");
-        id = sc.next();
-        return id;
+    public int idGetir() {
+        int id;
+        System.out.print("Id numarasi giriniz : ");
+        Random random = new Random();
+        id = random.nextInt(1 + rawsList1.size());
+        System.out.println(id);
+        return idKontrol(id);
+    }
+
+
+    public int idKontrol(int id) {
+        String dinamikHucreXpath, s;
+        List<String> idS = new ArrayList<>();
+
+        for (int i = 1; i <= rawsList1.size(); i++) {
+            int j = 0;
+            dinamikHucreXpath = "//tbody//tr[" + i + "]//td[" + 1 + "]";
+            List<WebElement> elems =  Driver.getDriver().findElements(By.xpath(dinamikHucreXpath));
+            idS.add(elems.get(j).getText());
+        }
+
+        if (idS.contains(String.valueOf(id)))
+           return id;
+        else
+            return idGetir();
     }
 
 
     public WebElement updateButtongetir() {
         String dinamikHucreXpath;
         WebElement istenenHucreElementi = null;
-        for (int i = 2; i <= rawsList1.size(); i++) {
+        for (int i = 1; i <= rawsList1.size(); i++) {
             dinamikHucreXpath = "//tbody//tr[" + i + "]//td[" + 6 + "]//a[@class='btn default btn-sm']";
             istenenHucreElementi = Driver.getDriver().findElement(By.xpath(dinamikHucreXpath));
         }

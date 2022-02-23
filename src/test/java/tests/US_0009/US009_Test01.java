@@ -64,7 +64,7 @@ public class US009_Test01 extends TestBaseRapor {
         select.selectByVisibleText("All");
         Thread.sleep(2000);
 
-        String id = hotelMyCampRoomReservation.idGetir();
+        int id = hotelMyCampRoomReservation.idGetir();
         Thread.sleep(1000);
         hotelMyCampRoomReservation.detailsButtonGetir(id);
         Thread.sleep(2000);
@@ -122,7 +122,7 @@ public class US009_Test01 extends TestBaseRapor {
         hotelMyCampRoomReservation.saveButtonGeneralData.click();
         Thread.sleep(1000);
         Assert.assertTrue(hotelMyCampRoomReservation.saveButtonGeneralData.isEnabled());
-        extentTest.pass("SaveButtonGeneralDataNotWork");
+        extentTest.info("SaveButtonGeneralDataNotWork");
 
         ReusableMethods.getScreenshot("US09/SaveGeneralData");
 
@@ -218,8 +218,6 @@ extentTest.pass("PropertySaved");
 
         ReusableMethods.getScreenshot("US09/RemoveProperty");
 
-        ReusableMethods.getScreenshot("US09/UpdateProperty");
-
     }
 
     @Test (priority = 5)
@@ -242,7 +240,7 @@ extentTest.pass("PropertySaved");
         extentTest.pass("DeleteButtonEnabled");
         Driver.getDriver().navigate().refresh();
         Thread.sleep(1000);
-        extentTest.pass("ReservationNotDeleted");
+        extentTest.info("ReservationNotDeleted");
 
         ReusableMethods.getScreenshot("US09/DeleteReservation");
 
